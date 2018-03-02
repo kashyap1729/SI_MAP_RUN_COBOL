@@ -1,0 +1,675 @@
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   1
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+ 010   M 1           H                1  MINI TRAIN RECORD
+   010 M H1-SHIPPER-NO     AN   6     1     SHIPPER NUMBER              00200 BX  00 00040 SHIPMENT IDENTIFICATION   AN    1   30
+                                                                        00470 N9  00 00020 REFERENCE NUMBER          AN    1   30
+   020 M H1-RECORD-TYPE    N0   1     7     RECORD-TYPE
+   030 O H1-RECORD-SEQ     N0   3     8     RECORD-SEQUENCE
+   040 O H1-RAIL-CLERK     AN   3    11     RAIL DESK IDENTIFICATION
+   050 M H1-ORIG-CARRIER   AN   3    14     ORIGINATING CARRIER
+   057 M H1-RELEASE-CC     AN   2    17     RELEASE(SHIPPED) CENTURY
+   060 M H1-RELEASE-DATE   YY   6    19     RELEASE(SHIPPED) YYMMDD     00400 M3  00 00020 DATE                      DT    6    6
+                                                                        00470 N9  00 00040 DATE                      DT    6    6
+                                                                        01000 G62 00 00020 DATE                      DT    6    6
+   070 M H1-RELEASE-TIME   TM   4    25     RELEASE TIME HH:MM          00400 M3  00 00030 TIME                      TM    4    4
+                                                                        00470 N9  00 00050 TIME                      TM    4    4
+   090 O H1-BILL-TYPE-CD   AN   1    29     TYPE OF RAIL BILL
+   100 O H1-FREIGHT-TERM   AN   1    30     PREPAID(P)/COLLECT(C)
+   110 O H1-MULTIPLE-SW    AN   1    31     INDICATES Y/N >1 SHIP NO
+   120 O H1-CLINE-SHIPMT   AN   1    32     Y/N FOR CLINE SHIPMENT
+   130 O H1-LGNTH-MSG-SW   AN   1    33     Y/N LENGTH MSG
+   140 O H1-CORRECT-SW     AN   1    34     Y/N/V CORRECTION/VOID
+   150 O H1-OPTIONAL-SW    AN   1    35     Y/N OPTIONAL DATA PRESEN
+   160 M H1-BILL-DESIG     AN  45    36     BILLING DESIGNATION         05500 L5  00 00020 LADING DESCRIPTION        AN    1   50
+   163 M H1-BILL-DES-1-4   AN   4    36     BILLING DESIG POS 1-4
+   165 M H1-BILL-DES-43    AN  12    44     BILLING DESIG POS 44-55
+   167 M H1-BILL-DES-20    AN  20    36     BILLING DESIG POS 1-20
+   168 M H1-BILL-DES-12    AN  12    36     BILLING DESIG POS 1-12
+   170 M H1-SHIP-TO-L1     AN  40    81     LINE 1 OF SHIP TO ADDRES    03837 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   H1-SHIP-TO-L1   NE ' '
+                                                                                          SAVE IN CONSTANT #: 08
+   172 M H1-SHIP-TO-L1-6   AN   6    81     LINE 1 OF SHIP TO (6)
+   180 M H1-SHIP-TO-L2     AN  40   121     LINE 2 OF SHIP TO ADDRES    03838 N2  00 00010 NAME                      AN    1   35  W
+                                                                       IF   H1-REDEF-L2     NE 'C/O'
+                                                                      AND   H1-REDEF-L2     NE 'A/C'
+   181 M H1-REDEF-L2       AN   3   121     1ST THREE BYTES OF LINE
+   182 M H1-REDEF-L2-LST   AN  37   124     LAST 37 BYTES OF LINE 2
+   183 M H1-REDEF-L2-RST   AN  36   125     LAST 36 BYTES OF LINE 2     03860 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   H1-REDEF-L2     EQ 'C/O'
+                                                                      6 04000 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H1-REDEF-L2     EQ 'A/C'
+                                                                      7 04000 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H1-REDEF-L2     EQ 'C/O'
+                                                                        04600 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   H1-REDEF-L2     EQ 'A/C'
+   190 O H1-SHIP-TO-L3     AN  40   161     LINE 3 OF SHIP TO ADDRES    03839 N3  00 00010 ADDRESS INFORMATION       AN    1   35  W
+                                                                        03862 N3  00 00010 ADDRESS INFORMATION       AN    1   35  W
+                                                                       IF   H1-REDEF-L2     EQ 'C/O'
+                                                                      AND   H1-SHIP-TO-L3   NE ' '
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   2
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   200 O H1-SHIP-TO-L4     AN  40   201     LINE 4 OF SHIP TO ADDRES    03839 N3  00 00020 ADDRESS INFORMATION       AN    1   35  W
+                                                                       IF   H1-SHIP-TO-L3   NE ' '
+   211 O H1-SHIP-TO-CITY   AN  18   241     SHIP TO CITY              1 01400 D9  00 00020 DESTINATION STATION       AN    2   19
+                                                                       IF   H3-BILL-TO-CITY EQ ' '
+                                                                        03840 N4  00 00010 CITY NAME                 AN    2   19
+                                                                                          SAVE IN CONSTANT #: 09
+                                                                        03863 N4  00 00010 CITY NAME                 AN    2   19
+                                                                       IF   H1-REDEF-L2     EQ 'C/O'
+                                                                      AND   H1-SHIP-TO-CITY NE ' '
+   212 O H1-SHIP-TO-ST     AN   2   259     SHIP TO STATE             1 01400 D9  00 00030 STATE OR PROVINCE CODE    ID    2    2
+                                                                       IF   H3-BILL-TO-ST   EQ ' '
+                                                                        03840 N4  00 00020 STATE OR PROVINCE CODE    ID    2    2
+                                                                                          SAVE IN CONSTANT #: 10
+                                                                        03863 N4  00 00020 STATE OR PROVINCE CODE    ID    2    2
+                                                                       IF   H1-REDEF-L2     EQ 'C/O'
+                                                                      AND   H1-SHIP-TO-ST   NE ' '
+   213 O H1-SHIP-TO-ZIP    AN   5   261     SHIP TO ZIP                 03840 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H1-SHIP-TO-ZIP  NE ' '
+                                                                                          SAVE IN CONSTANT #: 11
+                                                                        03863 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H1-REDEF-L2     EQ 'C/O'
+                                                                      AND   H1-SHIP-TO-ZIP  NE ' '
+   220 M H1-TOTAL-CARS     N0   3   266     TOTAL NUMBER OF CARS
+   230 M H1-TOTAL-PIECES   N0   5   269     TOTAL NUMBER OF PIECES      05400 L3  00 00110 LADING QUANTITY           N0    1    7
+                                                                                          SAVE IN CONSTANT #: 03
+   240 M H1-TOTAL-WEIGHT   N0   9   274     TOTAL BILLED WEIGHT         05400 L3  00 00010 WEIGHT                    R     1    8  W
+                                                                                          SAVE IN CONSTANT #: 02
+   250 M H1-SHIP-FR-CITY   AN  18   283     SHIP FROM CITY              03836 N4  00 00010 CITY NAME                 AN    2   19
+                                                                       IF   H1-SHIP-FR-CITY NE ' '
+   251 M H1-SHIP-FR-CIT4   AN   4   283     SHIP FROM CITY FIRST 4CH
+   260 M H1-SHIP-FR-ST     AN  18   301     SHIP FROM STATE
+   270 M H1-FOB-CITY       AN  18   319     FREIGHT ON BOARD CITY
+   280 M H1-FOB-STATE      AN  18   337     FREIGHT ON BOARD STATE
+   290 O H1-FOREIGN-ZIP    AN  11   355     FOREIGN ZIP CODE          1 03840 N4  00 00030 POSTAL CODE               ID    5    9  W
+                                                                       IF   H1-SHIP-TO-ZIP  EQ ' '
+                                                                                          SAVE IN CONSTANT #: 11
+   300 O H1-CDE-CNTRY      AN   3   366     COUNTRY CODE
+   310 O H1-SHP-FR-NAME    AN  13   369     SHIP FROM PLANT NAME        03834 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H1-SHP-FR-NAME  NE ' '
+   320 O H1-SHP-FR-ADDR    AN  20   382     SHIP FROM PLANT ADDRESS     03835 N3  00 00010 ADDRESS INFORMATION       AN    1   35
+                                                                       IF   H1-SHP-FR-ADDR  NE ' '
+   330 O H1-SHP-FR-STABB   AN   2   402     SHIP FROM PLANT STATE AB    03836 N4  00 00020 STATE OR PROVINCE         ID    2    2
+                                                                       IF   H1-SHP-FR-STABB NE ' '
+   340 O H1-SHP-FR-ZIP     AN   5   404     SHIP FROM PLANT ZIPCODE     03834 N1  00 00040 IDENTIFICATION CO         ID    2   17
+                                                                       IF   H1-SHP-FR-ZIP   NE ' '
+                                                                        03836 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H1-SHP-FR-ZIP   NE ' '
+   350 O H1-SHP-FR-CNTRY   AN   2   409     SHIP FROM PLANT COUNTRY     03836 N4  00 00040 COUNTRY CODE              ID    2    2
+                                                                       IF   H1-SHP-FR-CNTRY NE ' '
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   3
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+
+ 020   M 2           H                1  ROUTE RECORD
+   010 M H2-SHIPPER-NO     AN   6     1     SHIPPER-NUMBER
+   020 M H2-RECORD-TYPE    N0   1     7     RECORD-TYPE
+   030 M H2-RECORD-SEQ     N0   3     8     RECORD-SEQUENCE
+   040 M H2-SCAC-A         AN   4    11     SCAC CODE FOR 1ST CARRIE    01600 R2  00 00010 STANDARD CARRIER ALPHA    ID    2    4
+                                                                                          SAVE IN CONSTANT #: 07
+   050 O H2-A-SWITCH-PNT   AN  19    15     CITY NAME FOR 1ST SWITCH    01600 R2  00 00030 CITY NAME                 AN    2   19
+   060 O H2-SCAC-1         AN   4    34     SCAC-CODE-FOR-2ND CARRIE    01610 R2  00 00010 STANDARD CARRIER ALPHA    ID    2    4
+                                                                       IF   H2-SCAC-1       GT ' '
+                                                                                          SAVE IN CONSTANT #: 06
+   070 O H2-1-SWITCH-PNT   AN  19    38     CITY NAME FOR 2ND CARRIE    01610 R2  00 00030 CITY NAME                 AN    2   19
+                                                                       IF   H2-SCAC-1       GT ' '
+   080 O H2-SCAC-2         AN   4    57     SCAC-CODE-FOR-3RD-CARRIE    01611 R2  00 00010 STANDARD CARRIER ALPHA    ID    2    4
+                                                                       IF   H2-SCAC-2       GT ' '
+   090 O H2-2-SWITCH-PNT   AN  19    61     CITY NAME FOR 3RD CARRIE    01611 R2  00 00030 CITY NAME                 AN    2   19
+                                                                       IF   H2-SCAC-2       GT ' '
+   100 O H2-SCAC-3         AN   4    80     SCAC-CODE-FOR-4TH CARRIE    01612 R2  00 00010 STANDARD CARRIER ALPHA    ID    2    4
+                                                                       IF   H2-SCAC-3       GT ' '
+   110 O H2-3-SWITCH-PNT   AN  19    84     CITY NAME FOR 4TH SWITCH    01612 R2  00 00030 CITY NAME                 AN    2   19
+                                                                       IF   H2-SCAC-3       GT ' '
+   120 O H2-SCAC-4         AN   4   103     SCAC-CODE-FOR 5TH CARRIE    01613 R2  00 00010 STANDARD CARRIER ALPHA    ID    2    4
+                                                                       IF   H2-SCAC-4       GT ' '
+   130 O H2-4-SWITCH-PNT   AN  19   107     CITY NAME FOR 5TH SWITCH    01613 R2  00 00030 CITY NAME                 AN    2   19
+                                                                       IF   H2-SCAC-4       GT ' '
+   140 O H2-SCAC-5         AN   4   126     SCAC-CODE-FOR 6TH CARRIE
+   150 O H2-5-SWITCH-PNT   AN  19   130     CITY NAME FOR 6TH SWITCH
+   160 O H2-SCAC-6         AN   4   149     SCAC-CODE FOR 7TH CARRIE
+   170 O H2-6-SWITCH-PNT   AN  19   153     CITY-NAME FOR 7TH SWITCH
+   180 O H2-SCAC-7         AN   4   172     SCAC CODE FOR 8TH CARRIE
+   190 O H2-7-SWITCH-PNT   AN  19   176     CITY NAME FOR 8TH SWITCH
+   200 O H2-SCAC-8         AN   4   195     SCAC CODE FOR 9TH CARRIE
+   210 O H2-8-SWITCH-PNT   AN  19   199     CITY NAME FOR 9TH SWITCH
+   220 O H2-SCAC-9         AN   4   218     SCAC CODE FOR 10TH CARR.
+   230 O H2-9-SWITCH-PNT   AN  19   222     CITY NAME FOR 10TH SWITC
+
+ 030   O 3           H                1  MINI TRAIN COMMENTS
+   010 M H3-SHIPPER-NO     AN   6     1     SHIPPER NUMBER
+   020 M H3-RECORD-TYPE    N0   1     7     RECORD TYPE
+   030 O H3-RECORD-SEQ     N0   3     8     RECORD SEQUENCE
+   041 O H3-BILL-TO-CITY   AN  18    11     BILL TO CITY                01400 D9  00 00020 DESTINATION STATION       AN    2   19
+                                                                       IF   H3-BILL-TO-CITY NE ' '
+   042 O H3-BILL-TO-ST     AN   2    29     BILL TO STATE               01400 D9  00 00030 STATE OR PROVINCE CODE    ID    2    2
+                                                                       IF   H3-BILL-TO-ST   NE ' '
+   050 O H3-CONTRACT-NO    AN  30    31     CONTRACT NUMBER             00450 N9  00 00020 REFERENCE NUMBER          AN    1   30
+                                                                       IF   H3-CONTRACT-NO  NE ' '
+   055 O H3-CON-NO-15      AN  15    31     CONTRACT NUMBER (15)
+   060 O H3-STCC-NO        AN   9    61     STCC NUMBER                 01605 R2  00 00030 CITY NAME                 AN    2   19
+                                                                                          SAVE IN CONSTANT #: 01
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   4
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+                                                                        05500 L5  00 00030 COMMODITY CODE            ID    1   16
+                                                                       IF   H3-STCC-NO      NE ' '
+                                                                      AND   H3-STCC-NO-1    NE ' '
+   062 O H3-STCC-NO-1      AN   1    61     STCC NUMBER POSITION 1
+   064 O H3-STCC-NO-2-9    AN   8    62     STCC NUMBER POSITION 2-9  1 05500 L5  00 00030 COMMODITY CODE            ID    1   16
+                                                                       IF   H3-STCC-NO      NE ' '
+                                                                      AND   H3-STCC-NO-1    EQ ' '
+   070 O H3-DS-INSTRUC-1   AN  30    70     DISTRIB. SERV. COMMENTS     03825 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H3-DS-INSTRUC-1 NE ' '
+   080 O H3-DS-INSTRUC-2   AN  30   100     DISTRIB. SERV. COMMENTS     03826 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H3-DS-INSTRUC-2 NE ' '
+   090 O H3-CB-INSTRUC-1   AN  66   130     CENTRAL BILL COMMENTS
+   095 O H3-CB-1-CAREOF    AN   3   130     CARE OF WITHIN COMMENTS
+   097 O H3-CB-1-BROKER    AN  30   134     BROKER WITHIN COMMENTS
+   098 O H3-CB-1-NAME      AN  35   133     COMMENT 1 NAME
+   099 O H3-CB-1-ADDR      AN  35   133     COMMENT 1 ADDRESS
+   100 O H3-CB-INSTRUC-2   AN  74   196     CENTRAL BILL COMMENTS
+   102 O H3-CB-2-CAREOF2   AN   3   196     CARE OF WITHIN COMMENT(2
+   103 O H3-CB-2-BROKER    AN  30   200     BROKER WITHIN COMMENTS(2
+   105 O H3-CB-2-CAREOF    AN  16   231     CARE OF WITHIN COMMENTS
+   106 O H3-CB-2-ADDR      AN  21   199     FW-ADDRESS
+   107 O H3-CB-2-CITY      AN  21   220     FW-CITY
+   108 O H3-CB-2-ST        AN   2   241     FW-STATE
+   109 O H3-CB-2-ZIP       AN   9   243     FW-ZIP
+   110 O H3-CB-INSTRUC-3   AN  74   270     CENTRAL BILL COMMENTS
+   114 O H3-CB-3-CAREOF    AN   3   270     CARE OF WITHIN COMMENTS
+   115 O H3-CB-3-BROKER    AN  30   274     BROKER WITHIN COMMENTS
+   120 O H3-CB-INSTRUC-4   AN  74   344     CENTRAL BILL COMMENTS
+   122 O H3-CB-4-CAREOF    AN   3   344     CARE OF WITHIN COMMENTS
+   123 O H3-CB-4-BROKER    AN  30   348     BROKER WITHIN COMMENTS
+   125 O H3-CB-BILL-TO     AN   7   344     BILL TO PREFIX
+   126 O H3-CB-4-ADDR      AN  21   347     XR-ADDRESS
+   127 O H3-CB-4-CITY      AN  21   368     XR-CITY
+   128 O H3-CB-4-ST        AN   2   389     XR-STATE
+   129 O H3-CB-4-ZIP       AN   9   391     XR-ZIP
+   130 O H3-CB-BILL-NAME   AN  65   352     BILL TO NAME
+   132 O H3-CB-BILL-CODE   AN   5   353     BILL TO CODE
+   140 O H3-R11-1-ID       AN   3   130     R11-1-ID
+   150 O H3-R11-1-NAME     AN  35   133     R11-1-NAME                  03900 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'C/O'
+                                                                        04000 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                        04100 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+                                                                        04200 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'MEX'
+                                                                        04500 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   5
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   152 O H3-R11-1-NAME1    AN   1   133     R11-1-NAME (1)
+   154 O H3-R11-1-NAME2    AN  34   134     R11-1-NAME (34)
+   160 O H3-R11-1-ADDR     AN  28   168     R11-1-ADDR                  03910 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'C/O'
+                                                                        04010 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                        04110 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+                                                                        04300 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-1-ID     EQ 'MEX'
+   170 O H3-R11-2-ID       AN   3   196     R11-2-ID
+   180 O H3-R11-2-NAME     AN  35   199     R11-2-NAME                1 03900 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'C/O'
+                                                                      1 04000 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'U11'
+                                                                       OR   H3-R11-2-ID     EQ 'PFX'
+                                                                      1 04100 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+                                                                      1 04200 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'MEX'
+                                                                      1 04500 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+   182 O H3-R11-2-NAME1    AN   1   199     R11-2-NAME (1)
+   184 O H3-R11-2-NAME2    AN  34   200     R11-2-NAME (34)
+   190 O H3-R11-2-ADDR     AN  28   234     R11-2-ADDR                1 03910 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'C/O'
+                                                                      1 04010 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'U11'
+                                                                       OR   H3-R11-2-ID     EQ 'PFX'
+                                                                      1 04110 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+                                                                      1 04300 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-2-ID     EQ 'MEX'
+   200 O H3-R11-3-ID       AN   3   270     R11-3-ID
+   210 O H3-R11-3-NAME     AN  35   273     R11-3-NAME                2 03900 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'C/O'
+                                                                      2 04000 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'U11'
+                                                                       OR   H3-R11-3-ID     EQ 'PFX'
+                                                                      2 04100 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+                                                                      2 04200 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'MEX'
+                                                                      2 04500 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+   212 O H3-R11-3-NAME1    AN   1   273     R11-3-NAME (1)
+   214 O H3-R11-3-NAME2    AN  34   274     R11-3-NAME (34)
+   220 O H3-R11-3-ADDR     AN  28   308     R11-3-ADDR                2 03910 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'C/O'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   6
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+                                                                      2 04010 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'U11'
+                                                                       OR   H3-R11-3-ID     EQ 'PFX'
+                                                                      2 04110 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+                                                                      2 04300 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-3-ID     EQ 'MEX'
+   230 O H3-R11-4-ID       AN   3   344     R11-4-ID
+   240 O H3-R11-4-NAME     AN  35   347     R11-4-NAME                3 03900 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'C/O'
+                                                                      3 04000 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'U11'
+                                                                       OR   H3-R11-4-ID     EQ 'PFX'
+                                                                      3 04100 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+                                                                      3 04200 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'MEX'
+                                                                      3 04500 N1  00 00020 NAME                      AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+   242 O H3-R11-4-NAME1    AN   1   347     R11-4-NAME (1)
+   244 O H3-R11-4-NAME2    AN  34   348     R11-4-NAME (34)
+   250 O H3-R11-4-ADDR     AN  28   382     R11-4-ADDR                3 03910 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'C/O'
+                                                                      3 04010 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'U11'
+                                                                       OR   H3-R11-4-ID     EQ 'PFX'
+                                                                      3 04110 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+                                                                      3 04300 N3  00 00010 ADDRESS INFORMAT          AN    1   35
+                                                                       IF   H3-R11-4-ID     EQ 'MEX'
+   260 O H3-R11-1-CITY     AN  20   438     R11-1-CITY                  03920 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-1-ID     EQ 'C/O'
+                                                                        04020 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-1-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                        04120 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+                                                                        04400 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-1-ID     EQ 'MEX'
+   270 O H3-R11-1-ST       AN   2   458     R11-1-STATE                 03920 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-1-ID     EQ 'C/O'
+                                                                        04020 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-1-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                        04120 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+                                                                        04400 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-1-ID     EQ 'MEX'
+   280 O H3-R11-1-ZIP      AN   6   460     R11-1-ZIP                   03920 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-1-ID     EQ 'C/O'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   7
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+                                                                        04020 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-1-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                        04120 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-1-ID     EQ 'R11'
+                                                                        04400 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-1-ID     EQ 'MEX'
+   282 O H3-R11-1-ZIP6     AN   1   465     R11-1-ZIP (6)
+   290 O H3-R11-2-CITY     AN  20   466     R11-2-CITY                1 03920 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-2-ID     EQ 'C/O'
+                                                                      1 04020 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-2-ID     EQ 'U11'
+                                                                       OR   H3-R11-2-ID     EQ 'PFX'
+                                                                      1 04120 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+                                                                      1 04400 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-2-ID     EQ 'MEX'
+   300 O H3-R11-2-ST       AN   2   486     R11-2-STATE               1 03920 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-2-ID     EQ 'C/O'
+                                                                      1 04020 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-2-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                      1 04120 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+                                                                      1 04400 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-2-ID     EQ 'MEX'
+   310 O H3-R11-2-ZIP      AN   6   488     R11-2-ZIP                 1 03920 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-2-ID     EQ 'C/O'
+                                                                      1 04020 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-2-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                      1 04120 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-2-ID     EQ 'R11'
+                                                                      1 04400 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-2-ID     EQ 'MEX'
+   312 O H3-R11-2-ZIP6     AN   1   493     R11-2-ZIP (6)
+   320 O H3-R11-3-CITY     AN  20   494     R11-3-CITY                2 03920 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-3-ID     EQ 'C/O'
+                                                                      2 04020 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-3-ID     EQ 'U11'
+                                                                       OR   H3-R11-3-ID     EQ 'PFX'
+                                                                      2 04120 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+                                                                      2 04400 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-3-ID     EQ 'MEX'
+   330 O H3-R11-3-ST       AN   2   514     R11-3-STATE               2 03920 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-3-ID     EQ 'C/O'
+                                                                      2 04020 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-3-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   8
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+                                                                      2 04120 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+                                                                      2 04400 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-3-ID     EQ 'MEX'
+   340 O H3-R11-3-ZIP      AN   6   516     R11-3-ZIP                 2 03920 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-3-ID     EQ 'C/O'
+                                                                      2 04020 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-3-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                      2 04120 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-3-ID     EQ 'R11'
+                                                                      2 04400 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-3-ID     EQ 'MEX'
+   342 O H3-R11-3-ZIP6     AN   1   521     R11-3-ZIP (6)
+   350 O H3-R11-4-CITY     AN  20   522     R11-4-CITY                3 03920 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-4-ID     EQ 'C/O'
+                                                                      3 04020 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-4-ID     EQ 'U11'
+                                                                       OR   H3-R11-4-ID     EQ 'PFX'
+                                                                      3 04120 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+                                                                      3 04400 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   H3-R11-4-ID     EQ 'MEX'
+   360 O H3-R11-4-ST       AN   2   542     R11-4-STATE               3 03920 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-4-ID     EQ 'C/O'
+                                                                      3 04020 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-4-ID     EQ 'U11'
+                                                                      AND   H3-R11-1-ID     EQ 'PFX'
+                                                                      3 04120 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+                                                                      3 04400 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   H3-R11-4-ID     EQ 'MEX'
+   370 O H3-R11-4-ZIP      AN   6   544     R11-4-ZIP                 3 03920 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-4-ID     EQ 'C/O'
+                                                                      3 04020 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-4-ID     EQ 'U11'
+                                                                       OR   H3-R11-1-ID     EQ 'PFX'
+                                                                      3 04120 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-4-ID     EQ 'R11'
+                                                                      3 04400 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   H3-R11-4-ID     EQ 'MEX'
+   372 O H3-R11-4-ZIP6     AN   1   549     R11-4-ZIP (6)
+   380 O H3-CT-NAME        AN  40   602     CHARGE TO NAME            5 04000 N1  00 00020 NAME                      AN    1   35  W
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H3-CT-NAME      NE ' '
+   390 O H3-CT-ADDR        AN  40   642     CHARGE TO ADDRESS         4 04010 N3  00 00010 ADDRESS INFORMAT          AN    1   35  W
+                                                                       IF   H3-CT-ADDR      NE ' '
+                                                                      AND   CONSTANT-04     EQ 'CC'
+   400 O H3-CT-CITY        AN  25   682     CHARGE TO CITY            5 04020 N4  00 00010 CITY NAME                 AN    2   19  W
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H3-CT-CITY      NE ' '
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   9
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   410 O H3-CT-STATE       AN   2   707     CHARGE TO STATE           5 04020 N4  00 00020 STATE OR PROVINC          ID    2    2
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H3-CT-STATE     NE ' '
+   420 O H3-CT-ZIP         AN   9   709     CHARGE TO ZIP             5 04020 N4  00 00030 POSTAL CODE               ID    5    9
+                                                                       IF   CONSTANT-04     EQ 'CC'
+                                                                      AND   H3-CT-ZIP       NE ' '
+
+ 031   O 5           1                1  HEADER COMMENTS
+   010 M H5-SHIPPER-NO     AN   6     1     SHIPPER NUMBER
+   020 M H5-RECORD-TYPE    N0   1     7     RECORD TYPE
+   030 M H5-RECORD-SEQ     N0   3     8     RECORD SEQUENCE NUMBER
+   040 O H5-SHIP-DESC-1    AN  60    11     HEADER COMMENT 1            05510 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-1  NE ' '
+   050 O H5-SHIP-DESC-2    AN  60    71     HEADER COMMENT 2            05520 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-2  NE ' '
+   060 O H5-SHIP-DESC-3    AN  60   131     HEADER COMMENT 3            05530 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-3  NE ' '
+   070 O H5-SHIP-DESC-4    AN  60   191     HEADER COMMENT 4            05540 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-4  NE ' '
+   080 O H5-SHIP-DESC-5    AN  60   251     HEADER COMMENT 5            05550 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-5  NE ' '
+   090 O H5-SHIP-DESC-6    AN  60   311     HEADER COMMENT 6            05560 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-6  NE ' '
+   100 O H5-SHIP-DESC-7    AN  60   371     HEADER COMMENT 7            05570 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H5-SHIP-DESC-7  NE ' '
+
+ 032   O 4           D   N7           1  MINI TRAIN CAR DATA
+   010 M H4-SHIPPER-NO     AN   6     1     SHIPPER NUMBER
+   020 M H4-RECORD-TYPE    AN   1     7     RECORD TYPE
+   030 M H4-RECORD-SEQ     N0   3     8     RECORD SEQUENCE
+   040 O H4-NO-OF-PIECES   N0   4    11     NUMBER OF PIECES
+   050 O H4-BILLED-WT      N0   8    15     BILLED WEIGHT               05505 N7  00 00030 WEIGHT                    R     1    8
+                                                                       IF   H4-CAR-NUMBER   GT '0'
+   060 O H4-DUNNAGE-WT     N0   4    23     DUNNAGE WEIGHT              05505 N7  00 00070 DUNNAGE                   N0    1    6
+                                                                       IF   H4-CAR-NUMBER   GT '0'
+   070 O H4-TARE-WT        N0   4    27     DUNNAGE WEIGHT              05505 N7  00 00050 TARE WEIGHT               N0    3    8
+                                                                       IF   H4-CAR-NUMBER   GT '0'
+   080 O H4-SHIP-NO        AN   6    31     SHIPPER NUMBER
+   090 O H4-CAR-INITIALS   AN   4    37     CAR INITIALS                05505 N7  00 00010 EQUIPMENT INITIAL         AN    1    4
+                                                                       IF   H4-CAR-INITIALS GT ' '
+   100 O H4-CAR-NUMBER     N0   6    41     CAR NUMBER                  05505 N7  00 00020 EQUIPMENT NUMBER          AN    1   10
+                                                                       IF   H4-CAR-NUMBER   NE '0'
+   110 O H4-CAR-DESC       AN  40    47     CAR DESCRIPTION             05507 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+                                                                       IF   H4-CAR-DESC     NE ' '
+
+ 040   M 6           2   LX           1  RATE RECORD PER CAR
+   010 M D1-SHIPPER-NO     AN   6     1     SHIPPER NUMBER
+   020 M D1-RECORD-TYPE    N0   1     7     RECORD TYPE
+   030 O D1-RECORD-SEQ     N0   3     8     RECORD SEQUENCE             05600 LX  00 00010 ASSIGNED NUMBER           N0    1    6
+                                                                       IF   D1-RECORD-SEQ   GT '0'
+                                                                      AND   CONSTANT-07     NE 'IHB'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  10
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+                                                                      2 05600 LX  00 00010 ASSIGNED NUMBER           N0    1    6
+                                                                       IF   D1-RECORD-SEQ   GT '0'
+                                                                      AND   CONSTANT-06     NE 'NS'
+   040 O D1-RATE           N4   9    11     FREIGHT RATE                05700 L1  00 00020 FREIGHT RATE              R     1    9
+                                                                       IF   CONSTANT-07     NE 'IHB'
+                                                                      1 05700 L1  00 00020 FREIGHT RATE              R     1    9
+                                                                       IF   CONSTANT-06     NE 'NS'
+   050 O D1-RATE-QUAL      AN   2    20     FREIGHT RATE QAULIFIER      05700 L1  00 00030 RATE/VALUE QUALIFIER      ID    2    2
+                                                                       IF   CONSTANT-07     NE 'IHB'
+                                                                      1 05700 L1  00 00030 RATE/VALUE QUALIFIER      ID    2    2
+                                                                       IF   CONSTANT-06     NE 'NS'
+   060 O D1-RATE-CHARGE    N2   9    22     TOTAL FREIGHT CHARGE/CAR    05700 L1  00 00040 CHARGE                    N2    1    9
+                                                                       IF   CONSTANT-07     NE 'IHB'
+                                                                      1 05700 L1  00 00040 CHARGE                    N2    1    9
+                                                                       IF   CONSTANT-06     NE 'NS'
+   070 O D1-CHARGE-TYPE    AN   3    31     FREIGHT CHARGE TYPE
+   080 O D1-CHG-PAY-METH   AN   1    34     FREIGHT PAY METHOD
+   090 O D1-BILLED-WT      N0   8    35     BILLED WEIGHT               05620 L0  00 00040 WEIGHT                    R     1    8
+                                                                                          SAVE IN CONSTANT #: 10
+                                                                        05640 L0  00 00020 BILLED/RATE-AS QUANTIT    R     1   11
+                                                                       IF   D1-BILLED-WT    GT D1-MINIMUM-WT
+                                                                      AND   CONSTANT-07     NE 'IHB'
+                                                                      2 05640 L0  00 00020 BILLED/RATE-AS QUANTIT    R     1   11
+                                                                       IF   D1-BILLED-WT    GT D1-MINIMUM-WT
+                                                                      AND   CONSTANT-06     NE 'NS'
+   100 O D1-MINIMUM-WT     N0   8    43     MINIMUM WEIGHT              05620 L0  00 00020 BILLED/RATE-AS QU         R     1   11
+                                                                      1 05640 L0  00 00020 BILLED/RATE-AS QUANTIT    R     1   11
+                                                                       IF   D1-BILLED-WT    LT D1-MINIMUM-WT
+                                                                      AND   CONSTANT-07     NE 'IHB'
+                                                                      3 05640 L0  00 00020 BILLED/RATE-AS QUANTIT    R     1   11
+                                                                       IF   D1-BILLED-WT    LT D1-MINIMUM-WT
+                                                                      AND   CONSTANT-06     NE 'NS'
+   110 O D1-SHARED-CAR-2   AN   6    51     SHARED CAR SHIPNO 2
+   120 O D1-SHARED-CAR-3   AN   6    57     SHARED CAR SHIPNO 3
+   130 O D1-SHARED-CAR-4   AN   6    63     SHARED CAR SHIPNO 4
+   140 O D1-NO-OF-PIECES   N0   4    69     NUMBER OF PIECES            05620 L0  00 00080 LADING QUANTITY           N0    1    7
+                                                                        05640 L0  00 00080 LADING QUANTITY           N0    1    7
+                                                                       IF   CONSTANT-07     NE 'IHB'
+                                                                      1 05640 L0  00 00080 LADING QUANTITY           N0    1    7
+                                                                       IF   CONSTANT-06     NE 'NS'
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  11
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:29
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+
+
+                     APPLICATION PARTNER REFERENCE INFORMATION
+
+   PARTNER..................: H1-ORIG-CARRIER    QUAL.....:
+   USER.....................:                    QUAL.....:
+   INTERCHANGE VERSION......: 
+   GROUP/TRANSACTION VERSION: 
+   MULTIPLE ENVELOPE ID.....: 
+   APPLICATION KEY (1)......: 
+   APPLICATION KEY (2)......: 
+   APPLICATION KEY (3)......: 
+
+                     APPLICATION ENVELOPE DEFINITION INFORMATION
+
+   INTERCHANGE SENDER ID....:                    QUAL.....:
+   GROUP SENDER ID..........:                    QUAL.....:
+   INTERCHANGE RECEIVER ID..:                    QUAL.....:
+   GROUP RECEIVER ID........:                    QUAL.....:
+   INTERCHANGE CONTROL NUM..: 
+   GROUP CONTROL NUM........: 
+   TRANSACTION CONTROL NUM..: 
+   $$ADD BATCH ID...........: 
+   BG COMM ID...............:                    PASSWORD.:
+   ISA/UNB/STX TEST IND.....: 
+   UNB/STX/APPL REFERENCE...: 
+   UNB/STX PRIORITY CODE....: 
+   STX RECEPIENT TRANS REF..: 
+1GENTRAN MAPPING INTEGRATION  EBDI061          M A P P I N G  R E P O R T   (SUMMARY SECTION)                           PAGE   1
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      X    TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:30
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+0
+ SEG ID VER     SEGMENT SEQ     ELEMENT SEQ     MAPPING NO                    CONDITIONAL STATEMENTS
+ ------ ---     -----------     -----------     ----------          --------------------------------------------
+
+0          SAVE IN CONSTANT #: 01
+
+    R2  00         01605           00030            00
+                                                                  ELEMENT = H3-STCC-NO
+0          SAVE IN CONSTANT #: 02
+
+    L3  00         05400           00010            00
+                                                                  ELEMENT = H1-TOTAL-WEIGHT
+0          SAVE IN CONSTANT #: 03
+
+    L3  00         05400           00110            00
+                                                                  ELEMENT = H1-TOTAL-PIECES
+0          SAVE IN CONSTANT #: 06
+
+    R2  00         01610           00010            00
+                                                                  ELEMENT = H2-SCAC-1
+                                                                       IF   H2-SCAC-1       GT ' '
+0          SAVE IN CONSTANT #: 07
+
+    R2  00         01600           00010            00
+                                                                  ELEMENT = H2-SCAC-A
+0          SAVE IN CONSTANT #: 08
+
+    N1  00         03837           00020            00
+                                                                  ELEMENT = H1-SHIP-TO-L1
+                                                                       IF   H1-SHIP-TO-L1   NE ' '
+0          SAVE IN CONSTANT #: 09
+
+    N4  00         03840           00010            00
+                                                                  ELEMENT = H1-SHIP-TO-CITY
+0          SAVE IN CONSTANT #: 10
+
+    N4  00         03840           00020            00
+                                                                  ELEMENT = H1-SHIP-TO-ST
+
+    L0  00         05620           00040            00
+                                                                  ELEMENT = D1-BILLED-WT
+0          SAVE IN CONSTANT #: 11
+
+    N4  00         03840           00030            00
+                                                                  ELEMENT = H1-SHIP-TO-ZIP
+                                                                       IF   H1-SHIP-TO-ZIP  NE ' '
+1GENTRAN MAPPING INTEGRATION  EBDI061          M A P P I N G  R E P O R T   (SUMMARY SECTION)                           PAGE   2
+
+      TRANSLATION ID:  CB858UPR3        SEND OR RECEIVE:  S        NAME:  UP BOL (REV 3)                              DATE 09/27/2017
+    STANDARD VERSION:  003020      X    TRANSACTION SET:  858      USE CODE:  P        ENVELOPE TYPE:  X                TIME 15:27:30
+      APPLICATION ID:  CB858R3          SEND OR RECEIVE:  S        NAME:  RAIL BOL (REV 3-REMOVE COMP-3)
+0
+ SEG ID VER     SEGMENT SEQ     ELEMENT SEQ     MAPPING NO                    CONDITIONAL STATEMENTS
+ ------ ---     -----------     -----------     ----------          --------------------------------------------
+
+0          SAVE IN CONSTANT #: 11
+
+    N4  00         03840           00030            01
+                                                                  ELEMENT = H1-FOREIGN-ZIP
+                                                                       IF   H1-SHIP-TO-ZIP  EQ ' '

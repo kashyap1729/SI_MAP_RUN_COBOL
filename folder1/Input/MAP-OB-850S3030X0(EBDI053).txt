@@ -1,0 +1,545 @@
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   1
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+ 010   M BEG1        H                1  BEGINNING SEGMENT FOR PO
+   010 M BEG1KEY-PO-NUM    AN  22     1     X
+   020 M BEG1KEY-PARTNER   AN  14    23     X
+   030 M BEG1KEY-FILLER1   AN  11    37     X
+   040 M BEG1RECTYPE       AN   4    48     X
+   045 O BEG1-FILLER       AN   4    52     X
+   050 O BEG101            AN   2    56     X                           00100 BEG 00 00010 TRANSACTION SET PURP      ID    2    2
+   060 O BEG102            AN   2    58     X                           00100 BEG 00 00020 PURCHASE ORDER TYPE       ID    2    2
+   070 O BEG103            AN  22    60     X                           00100 BEG 00 00030 PURCHASE ORDER NUMBE      AN    1   22
+   080 O BEG104            AN  30    82     X                           00100 BEG 00 00040 RELEASE NUMBER            AN    1   30
+   090 O BEG105            AN   8   112     X
+   100 O BEG106            AN   6   120     X                           00100 BEG 00 00050 PURCHASE ORDER DATE       DT    6    6
+   110 O BEG107            AN  45   126     X
+   120 O BEG108            AN  30   171     X                           00100 BEG 00 00060 CONTRACT NUMBER           AN    1   30
+   130 O BEG109            AN   2   201     X                           00100 BEG 00 00070 ACKNOWLEDGMENT TYPE       ID    2    2
+   140 O BEG110            AN   3   203     X
+
+ 020   O NTE1        H              100  NOTE/SPECIAL INSTRUCTION
+   010 M NTE1KEY-PO-NUM    AN  22     1     X
+   020 M NTE1KEY-PARTNER   AN  14    23     X
+   030 M NTE1KEY-FILLER1   AN  11    37     X
+   040 M NTE1RECTYPE       AN   4    48     X
+   045 O NTE1-FILLER       AN   4    52     X
+   050 O NTE101            AN   3    56     X                           00200 NTE 00 00010 NOTE REFERENCE CODE       ID    3    3
+   060 O NTE102            AN  60    59     X                           00200 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+
+ 030   O REF1        H               12  REFERENCE NUMBERS
+   010 M REF1KEY-PO-NUM    AN  22     1     X
+   020 M REF1KEY-PARTNER   AN  14    23     X
+   030 M REF1KEY-FILLER1   AN  11    37     X
+   040 M REF1RECTYPE       AN   4    48     X
+   045 O REF1-FILLER       AN   4    52     X
+   050 O REF101            AN   2    56     X                           00400 REF 00 00010 REFERENCE NUMBER QUA      ID    2    2
+   060 O REF102            AN  30    58     X                           00400 REF 00 00020 REFERENCE NUMBER          AN    1   30
+   070 O REF103            AN  80    88     X                           00400 REF 00 00030 DESCRIPTION               AN    1   80
+
+ 050   O TAX1        H                3  TAX REFERENCE
+   010 M TAX1KEY-PO-NUM    AN  22     1     X
+   020 M TAX1KEY-PARTNER   AN  14    23     X
+   030 M TAX1KEY-FILLER1   AN  11    37     X
+   040 M TAX1RECTYPE       AN   4    48     X
+   045 O TAX1-FILLER       AN   4    52     X
+   050 O TAX101            AN  20    56     X                           00600 TAX 00 00010 TAX IDENTIFICATION N      AN    1   20
+   060 O TAX102            AN   2    76     X                           00600 TAX 00 00020 LOCATION QUALIFIER        ID    1    2
+   070 O TAX103            AN  25    78     X                           00600 TAX 00 00030 LOCATION IDENTIFIER       AN    1   25
+   080 O TAX104            AN   2   103     X                           00600 TAX 00 00040 LOCATION QUALIFIER        ID    1    2
+   090 O TAX105            AN  25   105     X                           00600 TAX 00 00050 LOCATION IDENTIFIER       AN    1   25
+   100 O TAX106            AN   2   130     X                           00600 TAX 00 00060 LOCATION QUALIFIER        ID    1    2
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   2
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   110 O TAX107            AN  25   132     X                           00600 TAX 00 00070 LOCATION IDENTIFIER       AN    1   25
+   120 O TAX108            AN   2   157     X                           00600 TAX 00 00080 LOCATION QUALIFIER        ID    1    2
+   130 O TAX109            AN  25   159     X                           00600 TAX 00 00090 LOCATION IDENTIFIER       AN    1   25
+   140 O TAX110            AN   2   184     X                           00600 TAX 00 00100 LOCATION QUALIFIER        ID    1    2
+   150 O TAX111            AN  25   186     X                           00600 TAX 00 00110 LOCATION IDENTIFIER       AN    1   25
+   160 O TAX112            AN   1   211     X                           00600 TAX 00 00120 TAX EXEMPT CODE           ID    1    1
+
+ 070   O FOB1        H                1  FOB RELATED INSTRUCTIONS
+   010 M FOB1KEY-PO-NUM    AN  22     1     X
+   020 M FOB1KEY-PARTNER   AN  14    23     X
+   030 M FOB1KEY-FILLER1   AN  11    37     X
+   040 M FOBRECTYPE        AN   4    48     X
+   045 O FOB1-FILLER       AN   4    52     X
+   050 O FOB101            AN   2    56     X                           00700 FOB 00 00010 SHIPMENT METHOD OF P      ID    2    2
+   060 O FOB102            AN   2    58     X                           00700 FOB 00 00020 LOCATION QUALIFIER        ID    1    2
+   070 O FOB103            AN  80    60     X                           00700 FOB 00 00030 DESCRIPTION               AN    1   80
+   080 O FOB104            AN   2   140     X                           00700 FOB 00 00040 TRANSPORTATION TERMS      ID    2    2
+   090 O FOB105            AN   6   142     X                           00700 FOB 00 00050 TRANSPORTATION TERMS      ID    3    3  W
+   100 O FOB106            AN   2   148     X                           00700 FOB 00 00060 LOCATION QUALIFIER        ID    1    2
+   110 O FOB107            AN  80   150     X                           00700 FOB 00 00070 DESCRIPTION               AN    1   80
+   120 O FOB108            AN   2   230     X                           00700 FOB 00 00080 RISK OF LOSS QUALIFI      ID    2    2
+   130 O FOB109            AN  80   232     X                           00700 FOB 00 00090 DESCRIPTION               AN    1   80
+
+ 090   O ITD1        H                5  TERMS OF SALE
+   010 M ITD1KEY-PO-NUM    AN  22     1     X
+   020 M ITD1KEY-PARTNER   AN  14    23     X
+   030 M ITD1KEY-FILLER1   AN  11    37     X
+   040 M ITD1RECTYPE       AN   4    48     X
+   045 O ITD1-FILLER       AN   4    52     X
+   050 O ITD101            AN   2    56     X                           01200 ITD 00 00010 TERMS TYPE CODE           ID    2    2
+   060 O ITD102            AN   2    58     X                           01200 ITD 00 00020 TERMS BASIS DATE COD      ID    1    2
+   070 O ITD103            ND   8    60     X                           01200 ITD 00 00030 TERMS DISCOUNT PERCE      R     1    6  W
+   080 O ITD104            AN   6    68     X                           01200 ITD 00 00040 TERMS DISCOUNT DUE D      DT    6    6
+   089 O ITD104Z           AN   1    74     X
+   090 M ITD105            ND   3    75     X                           01200 ITD 00 00050 TERMS DISCOUNT DAYS       N0    1    3
+                                                                       IF   ITD105          GT '000'
+                                                                      AND   ITD1RECTYPE     GT '   '
+   100 O ITD106            AN   6    78     X                           01200 ITD 00 00060 TERMS NET DUE DATE        DT    6    6
+   110 O ITD107            ND   4    84     X                           01200 ITD 00 00070 TERMS NET DAYS            N0    1    3  W
+   120 O ITD108            ND  11    88     X                           01200 ITD 00 00080 TERMS DISCOUNT AMOUN      N2    1   10  W
+   130 O ITD109            AN   6    99     X                           01200 ITD 00 00090 TERMS DEFERRED DUE D      DT    6    6
+   140 O ITD110            ND  11   105     X                           01200 ITD 00 00100 DEFERRED AMOUNT DUE       N2    1   10  W
+   150 O ITD111            ND   7   116     X                           01200 ITD 00 00110 PERCENT OF INVOICE P      R     1    5  W
+   160 O ITD112            AN  80   123     X                           01200 ITD 00 00120 DESCRIPTION               AN    1   80
+   170 O ITD113            ND   3   203     X                           01200 ITD 00 00130 DAY OF MONTH              N0    1    2  W
+   180 O ITD114            AN   1   206     X                           01200 ITD 00 00140 PAYMENT METHOD CODE       ID    1    1
+   190 O ITD115            ND  12   207     X                           01200 ITD 00 00150 PERCENT                   R     1   10  W
+
+ 110   O DTM1        H               10  DATE/TIME REFERENCE
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   3
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   010 M DTM1KEY-PO-NUM    AN  22     1     X
+   020 M DTM1KEY-PARTNER   AN  14    23     X
+   030 M DTM1KEY-FILLER1   AN  11    37     X
+   040 M DTMRECTYPE        AN   4    48     X
+   045 O DTM1-FILLER       AN   4    52     X
+   050 O DTM101            AN   3    56     X                           01500 DTM 00 00010 DATE/TIME QUALIFIER       ID    3    3
+   060 O DTM102            ND   6    59     X                           01500 DTM 00 00020 DATE                      DT    6    6
+   070 O DTM103            TM   4    65     X                           01500 DTM 00 00030 TIME                      AN    4    6
+   075 O DTM103-FILLER     AN   2    69     X
+   080 O DTM104            AN   2    71     X                           01500 DTM 00 00040 TIME CODE                 ID    2    2
+   090 O DTM105            ND   2    73     X                           01500 DTM 00 00050 CENTURY                   N0    2    2
+
+ 120   O PID1        H              200  PRODUCT/ITEM DESCRIPTION
+   010 M PID1KEY-PO-NUM    AN  22     1     X
+   020 M PID1KEY-PARTNER   AN  14    23     X
+   030 M PID1KEY-FILLER    AN  11    37     X
+   040 M PID1RECTYPE       AN   4    48     X
+   050 M PID1-FILLER       AN   4    52     X
+   060 O PID101            AN   1    56     X                           01900 PID 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+                                                                        05000 PID 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+   070 O PID102            AN   3    57     X                           01900 PID 00 00020 PRODUCT/PROCESS CHAR      ID    2    3
+                                                                        05000 PID 00 00020 PRODUCT/PROCESS CHAR      ID    2    3
+   080 O PID103            AN   2    60     X                           01900 PID 00 00030 AGENCY QUALIFIER COD      ID    2    2
+                                                                        05000 PID 00 00030 AGENCY QUALIFIER COD      ID    2    2
+   090 O PID104            AN  12    62     X                           01900 PID 00 00040 PRODUCT DESCRIPTION       AN    1   12
+                                                                        05000 PID 00 00040 PRODUCT DESCRIPTION       AN    1   12
+   100 O PID105            AN  80    74     X                           01900 PID 00 00050 DESCRIPTION               AN    1   80
+                                                                        05000 PID 00 00050 DESCRIPTION               AN    1   80
+   110 O PID106            AN   2   154     X                           01900 PID 00 00060 SURFACE/LAYER/POSITI      ID    2    2
+                                                                        05000 PID 00 00060 SURFACE/LAYER/POSITI      ID    2    2
+   120 O PID107            AN  15   156     NEW IN 3030                 01900 PID 00 00070 SOURCE SUBQUALIFIER       AN    1   15
+                                                                        05000 PID 00 00070 SOURCE SUBQUALIFIER       AN    1   15
+   130 O PID108            AN   1   171     NEW IN 3030                 01900 PID 00 00080 YES/NO CONDITION OR       ID    1    1
+                                                                        05000 PID 00 00080 YES/NO CONDITION OR       ID    1    1
+
+ 130   O MEA1        H               40  MEASUREMENTS
+   010 M MEA1KEY-PO-NUM    AN  22     1     X
+   020 M MEA1KEY-PARTNER   AN  14    23     X
+   030 M MEA1KEY-FILLER1   AN  11    37     X
+   040 M MEA1RECTYPE       AN   4    48     X
+   050 O MEA1-FILLER       AN   4    52     X
+   060 O MEA101            AN   2    56     X                           02000 MEA 00 00010 MEASUREMENT REFERENC      ID    2    2
+   070 O MEA102            AN   3    58     X                           02000 MEA 00 00020 MEASUREMENT QUALIFIE      ID    1    3
+   080 O MEA103            ND  12    61     X                           02000 MEA 00 00030 MEASUREMENT VALUE         R     1   10  W
+   090 O MEA104            AN   2    73     X                           02000 MEA 00 00040 UNIT OR BASIS FOR ME      ID    2    2
+   100 O MEA105            ND  12    75     X                           02000 MEA 00 00190 RANGE MINIMUM             R     1   10  W
+   110 O MEA106            ND  12    87     X                           02000 MEA 00 00200 RANGE MAXIMUM             R     1   10  W
+   120 O MEA107            AN   2    99     X                           02000 MEA 00 00210 MEASUREMENT SIGNIFIC      ID    2    2
+   130 O MEA108            AN   2   101     X                           02000 MEA 00 00220 MEASUREMENT ATTRIBUT      ID    2    2
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   4
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   140 O MEA109            AN   2   103     X                           02000 MEA 00 00230 SURFACE/LAYER/POSITI      ID    2    2
+   145 O MEA124            AN   4   105     X                           02000 MEA 00 00240 MEASUREMENT METHOD O      ID    2    4
+   150 O MEA104-NEW-1      AN  31   109     X
+   160 O MEA104-NEW-2      AN  31   140     X
+   170 O MEA104-NEW-3      AN  31   171     X
+   180 O MEA104-NEW-4      AN  31   202     X
+   190 O MEA104-NEW-5      AN  31   233     X
+
+ 135   O PWK1        H               25  PAPERWORK
+   010 M PWK1KEY-PO-NUM    AN  22     1     X
+   020 M PWK1KEY-PARTNER   AN  14    23     X
+   030 M PWK1KEY-FILLER1   AN  11    37     X
+   040 M PWK1RECTYPE       AN   4    48     X
+   050 O PWK1-FILLER       AN   4    52     X
+   060 O PWK101            AN   2    56     X                           02100 PWK 00 00010 REPORT TYPE CODE          ID    2    2
+   070 O PWK102            ID   2    58     X                           02100 PWK 00 00020 REPORT TRANSMISSION       ID    2    2
+   080 O PWK103            ND   3    60     X                           02100 PWK 00 00030 REPORT COPIES NEEDED      N0    1    2  W
+   090 O PWK104            AN   2    63     X                           02100 PWK 00 00040 ENTITY IDENTIFIER CO      ID    2    2
+   100 O PWK105            AN   2    65     X                           02100 PWK 00 00050 IDENTIFICATION CODE       ID    1    2
+   110 O PWK106            AN  17    67     X                           02100 PWK 00 00060 IDENTIFICATION CODE       AN    2   17
+   120 O PWK107            AN  80    84     X                           02100 PWK 00 00070 DESCRIPTION               AN    1   80
+   130 O PWK108            AN   2   164     X                           02100 PWK 00 00080 PAPERWORK/REPORT ACT      ID    1    2
+
+ 140   O PKG1        H              200  MARKING, PACKAGING, LOADING
+   010 M PKG1KEY-PO-NUM    AN  22     1     X
+   020 M PKG1KEY-PARTNER   AN  14    23     X
+   030 M PKG1KEY-FILLER1   AN  11    37     X
+   040 M PKG1RECTYPE       AN   4    48     X
+   050 O PKG1-FILLER       AN   4    52     X
+   060 O PKG101            AN   1    56     X                           02200 PKG 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+   070 O PKG102            AN   5    57     X                           02200 PKG 00 00020 PACKAGING CHARACTERI      ID    1    5
+   080 O PKG103            AN   2    62     X                           02200 PKG 00 00030 AGENCY QUALIFIER COD      ID    2    2
+   090 O PKG104            AN   7    64     X                           02200 PKG 00 00040 PACKAGING DESCRIPTIO      AN    1    7
+   100 O PKG105            AN  80    71     X                           02200 PKG 00 00050 DESCRIPTION               AN    1   80
+   110 O PKG106            AN   2   151     X                           02200 PKG 00 00060 UNIT LOAD OPTION COD      ID    2    2
+
+ 150   O TD51        H               12  CARRIER DETAILS
+   010 M TD51KEY-PO-NUM    AN  22     1     X
+   020 M TD51KEY-PARTNER   AN  14    23     X
+   030 M TD51KEY-FILLER1   AN  11    37     X
+   040 M TD51RECTYPE       AN   4    48     X
+   045 O TD51-FILLER       AN   4    52     X
+   050 O TD5101            AN   2    56     X                           02400 TD5 00 00010 ROUTING SEQUENCE COD      ID    1    2
+   060 O TD5102            AN   2    58     X                           02400 TD5 00 00020 IDENTIFICATION CODE       ID    1    2
+   070 O TD5103            AN  17    60     X                           02400 TD5 00 00030 IDENTIFICATION CODE       AN    2   17
+   080 O TD5104            AN   2    77     X                           02400 TD5 00 00040 TRANSPORTATION METHO      ID    1    2
+   090 O TD5105            AN  35    79     X                           02400 TD5 00 00050 ROUTING                   AN    1   35
+   100 O TD5106            AN   2   114     X                           02400 TD5 00 00060 SHIPMENT/ORDER STATU      ID    2    2
+   110 O TD5107            AN   2   116     X                           02400 TD5 00 00070 LOCATION QUALIFIER        ID    1    2
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   5
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   120 O TD5108            AN  25   118     X                           02400 TD5 00 00080 LOCATION IDENTIFIER       AN    1   25
+   130 O TD5109            AN   2   143     X                           02400 TD5 00 00090 TRANSIT DIRECTION CO      ID    2    2
+   140 O TD5110            AN   2   145     X                           02400 TD5 00 00100 TRANSIT TIME DIRECTI      ID    2    2
+   150 O TD5111            ND   6   147     X                           02400 TD5 00 00110 TRANSIT TIME              R0    1    4  W
+   160 O TD5112            AN   2   153     X
+
+ 170   O N1 1        H   N1           1  NAME
+   010 M N1 1KEY-PO-NUM    AN  22     1     X
+   020 M N1 1KEY-PARTNER   AN  14    23     X
+   030 M N1 1KEY-FILLER1   AN  11    37     X
+   040 M N1 1RECTYPE       AN   4    48     X
+   045 O N1 1-FILLER       AN   4    52     X
+   050 O N1 101            AN   2    56     X                           03100 N1  00 00010 ENTITY IDENTIFIER CO      ID    2    2
+   060 O N1 102            AN  35    58     X                           03100 N1  00 00020 NAME                      AN    1   35
+   070 O N1 103            AN   2    93     X                           03100 N1  00 00030 IDENTIFICATION CODE       ID    1    2
+   080 O N1 104            AN  17    95     X                           03100 N1  00 00040 IDENTIFICATION CODE       AN    2   17
+
+ 190   O N2 1        H   N1           2  ADDITIONAL NAME INFO
+   010 M N2 1KEY-PO-NUM    AN  22     1     X
+   020 M N2 1KEY-PARTNER   AN  14    23     X
+   030 M N2 1KEY-FILLER1   AN  11    37     X
+   040 M N2 1RECTYPE       AN   4    48     X
+   045 O N2 1-FILLER       AN   4    52     X
+   050 O N2 101            AN  35    56     X                           03105 N2  00 00010 NAME                      AN    1   35
+   060 O N2 102            AN  35    91     X                           03105 N2  00 00020 NAME                      AN    1   35
+
+ 210   O N3 1        H   N1           2  ADDRESS INFORMATION
+   010 M N3 1KEY-PO-NUM    AN  22     1     X
+   020 M N3 1KEY-PARTNER   AN  14    23     X
+   030 M N3 1KEY-FILLER1   AN  11    37     X
+   040 M N3 1RECTYPE       AN   4    48     X
+   045 O N3 1-FILLER       AN   4    52     X
+   050 O N3 101            AN  35    56     X                           03110 N3  00 00010 ADDRESS INFORMATION       AN    1   35
+   060 O N3 102            AN  35    91     X                           03110 N3  00 00020 ADDRESS INFORMATION       AN    1   35
+
+ 230   O PER2        H   N1           3  ADMIN COMMUNICATION CONTACT
+   010 M PER2KEY-PO-NUM    AN  22     1     X
+   020 M PER2KEY-PARTNER   AN  14    23     X
+   030 M PER2KEY-FILLER1   AN  11    37     X
+   040 M PER2RECTYPE       AN   4    48     X
+   045 O PER2-FILLER       AN   4    52     X
+   050 O PER201            AN   2    56     X                           03115 PER 00 00010 CONTACT FUNCTION COD      ID    2    2
+   060 O PER202            AN  35    58     X                           03115 PER 00 00020 NAME                      AN    1   35
+   070 O PER203            AN   2    93     X                           03115 PER 00 00030 COMMUNICATION NUMBER      ID    2    2
+   080 O PER204            AN  25    95     X                           03115 PER 00 00040 COMMUNICATION NUMBER      AN    1   25
+   085 O PER205            AN  45   120     X
+   090 O PER205A           AN   2   165     X                           03115 PER 00 00050 COMMUNICATION NUMBER      ID    2    2
+   100 O PER206            AN  25   167     X                           03115 PER 00 00060 COMMUNICATION NUMBER      AN    1   25
+
+ 250   O PO11        D   PO1          1  BASELINE ITEM DATA
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   6
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   010 M PO11KEY-PO-NUM    AN  22     1     X
+   020 M PO11KEY-PARTNER   AN  14    23     X
+   030 M PO11KEY-FILLER1   AN  11    37     X
+   040 M PO11RECTYPE       AN   4    48     X
+   045 O PO11-FILLER       AN   4    52     X
+   050 O PO1101            AN  11    56     X                           04400 PO1 00 00010 ASSIGNED IDENTIFICAT      AN    1   11
+   060 O PO1102            ND  11    67     X                           04400 PO1 00 00020 QUANTITY ORDERED          R     1    9  W
+   070 O PO1103            AN   2    78     X                           04400 PO1 00 00030 UNIT OR BASIS FOR ME      ID    2    2
+   080 O PO1104            ND  16    80     X                           04400 PO1 00 00040 UNIT PRICE                R     1   14  W
+   090 O PO1105            AN   2    96     X                           04400 PO1 00 00050 BASIS OF UNIT PRICE       ID    2    2
+   100 O PO1106            AN   2    98     X                           04400 PO1 00 00060 PRODUCT/SERVICE ID Q      ID    2    2
+   110 O PO1107            AN  30   100     X                           04400 PO1 00 00070 PRODUCT/SERVICE ID        AN    1   30
+   120 O PO1108            AN   2   130     X                           04400 PO1 00 00080 PRODUCT/SERVICE ID Q      ID    2    2
+   130 O PO1109            AN  30   132     X                           04400 PO1 00 00090 PRODUCT/SERVICE ID        AN    1   30
+   140 O PO1110            AN   2   162     X                           04400 PO1 00 00100 PRODUCT/SERVICE ID Q      ID    2    2
+   150 O PO1111            AN  30   164     X                           04400 PO1 00 00110 PRODUCT/SERVICE ID        AN    1   30
+   160 O PO1112            AN   2   194     X                           04400 PO1 00 00120 PRODUCT/SERVICE ID Q      ID    2    2
+   170 O PO1113            AN  30   196     X                           04400 PO1 00 00130 PRODUCT/SERVICE ID        AN    1   30
+   180 O PO1114            AN   2   226     X                           04400 PO1 00 00140 PRODUCT/SERVICE ID Q      ID    2    2
+   190 O PO1115            AN  30   228     X                           04400 PO1 00 00150 PRODUCT/SERVICE ID        AN    1   30
+   200 O PO1116            AN   2   258     X                           04400 PO1 00 00160 PRODUCT/SERVICE ID Q      ID    2    2
+   210 O PO1117            AN  30   260     X                           04400 PO1 00 00170 PRODUCT/SERVICE ID        AN    1   30
+   220 O PO1118            AN   2   290     X                           04400 PO1 00 00180 PRODUCT/SERVICE ID Q      ID    2    2
+   230 O PO1119            AN  30   292     X                           04400 PO1 00 00190 PRODUCT/SERVICE ID        AN    1   30
+   240 O PO1120            AN   2   322     X                           04400 PO1 00 00200 PRODUCT/SERVICE ID Q      ID    2    2
+   250 O PO1121            AN  30   324     X                           04400 PO1 00 00210 PRODUCT/SERVICE ID        AN    1   30
+   260 O PO1122            AN   2   354     X                           04400 PO1 00 00220 PRODUCT/SERVICE ID Q      ID    2    2
+   270 O PO1123            AN  30   356     X                           04400 PO1 00 00230 PRODUCT/SERVICE ID        AN    1   30
+   280 O PO1124            AN   2   386     X                           04400 PO1 00 00240 PRODUCT/SERVICE ID Q      ID    2    2
+   290 O PO1125            AN  30   388     X                           04400 PO1 00 00250 PRODUCT/SERVICE ID        AN    1   30
+
+ 255   O MEA2        D   PO1         40  MEASUREMENTS
+   010 M MEA2KEY-PO-NUM    AN  22     1     X
+   020 M MEA2KEY-PARTNER   AN  14    23     X
+   030 O MEA2KEY-FILLER1   AN  11    37     X
+   042 M MEA2RECTYPE       AN   4    48     X
+   045 O MEA2-FILLER       AN   4    52     X
+   080 O MEA201            AN   2    56     X                           04900 MEA 00 00010 MEASUREMENT REFERENC      ID    2    2
+   090 O MEA202            AN   3    58     X                           04900 MEA 00 00020 MEASUREMENT QUALIFIE      ID    1    3
+   100 O MEA203            ND  12    61     X                           04900 MEA 00 00030 MEASUREMENT VALUE         R     1   10  W
+   110 O MEA204            AN   2    73     X                           04900 MEA 00 00040 UNIT OR BASIS FOR ME      ID    2    2
+   120 O MEA205            ND  12    75     X                           04900 MEA 00 00190 RANGE MINIMUM             R     1   10  W
+   130 O MEA206            ND  12    87     X                           04900 MEA 00 00200 RANGE MAXIMUM             R     1   10  W
+   140 O MEA207            AN   2    99     X                           04900 MEA 00 00210 MEASUREMENT SIGNIFIC      ID    2    2
+   150 O MEA208            AN   2   101     X                           04900 MEA 00 00220 MEASUREMENT ATTRIBUT      ID    2    2
+   160 O MEA209            AN   2   103     X                           04900 MEA 00 00230 SURFACE/LAYER/POSITI      ID    2    2
+   170 O MEA224            AN   4   105     X                           04900 MEA 00 00240 MEASUREMENT METHOD O      ID    2    4
+   180 O MEA204-NEW-1      AN  31   109     X
+   190 O MEA204-NEW-2      AN  31   140     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   7
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   200 O MEA204-NEW-3      AN  31   171     X
+   210 O MEA204-NEW-4      AN  31   202     X
+   220 O MEA204-NEW-5      AN  31   233     X
+
+ 257   O PID2        D   PID          1  PRODUCT/ITEM DESCRIPTION
+   010 M PID2KEY-PO-NUM    AN  22     1     X
+   020 M PID2KEY-PARTNER   AN  14    23     X
+   030 O PID2KEY-FILLER1   AN  11    37     X
+   042 M PID2RECTYPE       AN   4    48     X
+   045 O PID2-FILLER       AN   4    52     X
+   060 O PID201            AN   1    56     X
+   070 O PID202            AN   3    57     X
+   080 O PID203            AN   2    60     X
+   090 O PID204            AN  12    62     X
+   100 O PID205            AN  80    74     X
+   110 O PID206            AN   2   154     X
+   120 O PID207            AN  15   156     X
+   130 O PID208            AN   1   171     X
+
+ 258   O MEA3        D   PID         10  MEASUREMENTS
+   010 M MEA3KEY-PO-NUM    AN  22     1     X
+   020 M MEA3KEY-PARTNER   AN  14    23     X
+   030 M MEA3KEY-FILLER1   AN  11    37     X
+   040 M MEA3RECTYPE       AN   4    48     X
+   050 O MEA3-FILLER       AN   4    52     X
+   060 O MEA301            AN   2    56     X                           05005 MEA 00 00010 MEASUREMENT REFERENC      ID    2    2
+   070 O MEA302            AN   3    58     X                           05005 MEA 00 00020 MEASUREMENT QUALIFIE      ID    1    3
+   080 O MEA303            ND  12    61     X                           05005 MEA 00 00030 MEASUREMENT VALUE         R     1   10  W
+   090 O MEA304            AN   2    73     X                           05005 MEA 00 00040 UNIT OR BASIS FOR ME      ID    2    2
+   100 O MEA305            ND  12    75     X                           05005 MEA 00 00190 RANGE MINIMUM             R     1   10  W
+   110 O MEA306            ND  12    87     X                           05005 MEA 00 00200 RANGE MAXIMUM             R     1   10  W
+   120 O MEA307            AN   2    99     X                           05005 MEA 00 00210 MEASUREMENT SIGNIFIC      ID    2    2
+   130 O MEA308            AN   2   101     X                           05005 MEA 00 00220 MEASUREMENT ATTRIBUT      ID    2    2
+   140 O MEA309            AN   2   103     X                           05005 MEA 00 00230 SURFACE/LAYER/POSITI      ID    2    2
+   150 O MEA324            AN   4   105     X                           05005 MEA 00 00240 MEASUREMENT METHOD O      ID    2    4
+   160 O MEA304-NEW-1      AN  31   109     X
+   170 O MEA304-NEW-2      AN  31   140     X
+   180 O MEA304-NEW-3      AN  31   171     X
+   190 O MEA304-NEW-4      AN  31   202     X
+   200 O MEA304-NEW-5      AN  31   233     X
+
+ 260   O PWK2        D   PO1         25  PAPERWORK
+   010 M PWK2KEY-PO-NUM    AN  22     1     X
+   020 M PWK2KEY-PARTNER   AN  14    23     X
+   030 O PWK2KEY-FILLER1   AN  11    37     X
+   050 M PWK2RECTYPE       AN   4    48     X
+   055 O PWK2-FILLER       AN   4    52     X
+   080 O PWK201            AN   2    56     X                           05200 PWK 00 00010 REPORT TYPE CODE          ID    2    2
+   090 O PWK202            AN   2    58     X                           05200 PWK 00 00020 REPORT TRANSMISSION       ID    2    2
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   8
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   095 O PWK202Z           AN   1    60     X
+   100 O PWK203            ND   2    61     X                           05200 PWK 00 00030 REPORT COPIES NEEDED      N0    1    2
+   110 O PWK204            AN   2    63     X                           05200 PWK 00 00040 ENTITY IDENTIFIER CO      ID    2    2
+   120 O PWK205            AN   2    65     X                           05200 PWK 00 00050 IDENTIFICATION CODE       ID    1    2
+   130 O PWK206            AN  17    67     X                           05200 PWK 00 00060 IDENTIFICATION CODE       AN    2   17
+   140 O PWK207            AN  80    84     X                           05200 PWK 00 00070 DESCRIPTION               AN    1   80
+   150 O PWK208            AN   2   164     X                           05200 PWK 00 00080 PAPERWORK/REPORT ACT      ID    1    2
+
+ 265   O PKG3        D   PO1        200  MARKING, PACKAGING, LOADING
+   010 M PKG3KEY-PO-NUM    AN  22     1     X
+   020 M PKG3KEY-PARTNER   AN  14    23     X
+   030 M PKG3KEY-FILLER1   AN  11    37     X
+   043 M PKG3-RECTYPE      AN   4    48     X
+   050 M PKG3-FILLER       AN   4    52     X
+   080 O PKG301            AN   1    56     X                           05205 PKG 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+   090 O PKG302            AN   5    57     X                           05205 PKG 00 00020 PACKAGING CHARACTERI      ID    1    5
+   100 O PKG303            AN   2    62     X                           05205 PKG 00 00030 AGENCY QUALIFIER COD      ID    2    2
+   110 O PKG304            AN   7    64     X                           05205 PKG 00 00040 PACKAGING DESCRIPTIO      AN    1    7
+   120 O PKG305            AN  80    71     X                           05205 PKG 00 00050 DESCRIPTION               AN    1   80
+   130 O PKG306            AN   2   151     X                           05205 PKG 00 00060 UNIT LOAD OPTION COD      ID    2    2
+
+ 290   O REF3        D   PO1         12  REFERENCE NUMBERS
+   010 M REF3KEY-PO-NUM    AN  22     1     X
+   020 M REF3KEY-PARTNER   AN  14    23     X
+   030 M REF3KEY-FILLER1   AN  11    37     X
+   040 M REF3RECKEY        AN   4    48     X
+   045 O REF3-FILLER       AN   4    52     X
+   050 O REF301            AN   2    56     X                           05500 REF 00 00010 REFERENCE NUMBER QUA      ID    2    2
+   060 O REF302            AN  30    58     X                           05500 REF 00 00020 REFERENCE NUMBER          AN    1   30
+   070 O REF303            AN  80    88     X                           05500 REF 00 00030 DESCRIPTION               AN    1   80
+
+ 295   O DTM2        D   PO1         10  DATE/TIME REF
+   010 M DTM2KEY-PO-NUM    AN  22     1     X
+   020 M DTM2KEY-PARTNER   AN  14    23     X
+   030 M DTM2KEY-FILLER1   AN  11    37     X
+   040 M DTM2RECTYPE       AN   4    48     X
+   050 O DTM2-FILLER       AN   4    52     X
+   060 O DTM201            AN   3    56     X                           06700 DTM 00 00010 DATE/TIME QUALIFIER       ID    3    3
+   070 O DTM202            ND   6    59     X                           06700 DTM 00 00020 DATE                      DT    6    6
+   080 O DTM203            TM   4    65     X                           06700 DTM 00 00030 TIME                      AN    4    6
+   085 O DTM203-FILLER     AN   2    69     X
+   090 O DTM204            AN   4    71     X                           06700 DTM 00 00040 TIME CODE                 ID    2    2  W
+   110 O DTM205            ND   2    75     X
+
+ 300   O SCH1        D   PO1        200  LINE ITEM SCHEDULE
+   010 M SCH1KEY-PO-NUM    AN  22     1     X
+   020 M SCH1KEY-PARTNER   AN  14    23     X
+   030 M SCH1KEY-FILLER1   AN  11    37     X
+   050 M SCH1RECTYPE       AN   4    48     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   9
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   055 O SCH1-FILLER       AN   4    52     X
+   060 O SCH101            ND  17    56     X                           06900 SCH 00 00010 QUANTITY                  R     1   15  W
+   070 O SCH102            AN   2    73     X                           06900 SCH 00 00020 UNIT OR BASIS FOR ME      ID    2    2
+   080 O SCH103            AN  80    75     ELIMINATED - VERSION 204
+   090 O SCH104            AN   2   155     X                           06900 SCH 00 00030 ENTITY IDENTIFIER CO      ID    2    2
+   100 O SCH105            AN  35   157     X                           06900 SCH 00 00040 NAME                      AN    1   35
+   110 O SCH106            AN   3   192     X                           06900 SCH 00 00050 DATE/TIME QUALIFIER       ID    3    3
+   120 O SCH107            N0   6   195     X                           06900 SCH 00 00060 DATE                      DT    6    6
+   130 O SCH108            TM   4   201     X                           06900 SCH 00 00070 TIME                      AN    4    6
+   132 O SCH108A           N0   2   205     X
+   140 O SCH109            AN   3   207     X                           06900 SCH 00 00080 DATE/TIME QUALIFIER       ID    3    3
+   150 O SCH110            N0   6   210     X                           06900 SCH 00 00090 DATE                      DT    6    6
+   160 O SCH111            TM   4   216     X                           06900 SCH 00 00100 TIME                      AN    4    6
+   162 O SCH111A           N0   2   220     X
+   170 O SCH112            AN  45   222     X                           06900 SCH 00 00110 REQUEST REFERENCE NU      AN    1   45
+
+ 310   M CTT1        S                1  TRANSACTION TOTALS
+   010 M CTT1KEY-PO-NUM    AN  22     1     X
+   020 M CTT1KEY-PARTNER   AN  14    23     X
+   030 M CTT1KEY-FILLER1   AN  11    37     X
+   040 M CTT1RECTYPE       AN   4    48     X
+   045 O CTT1-FILLER       AN   4    52     X
+   050 O CTT101            ND   7    56     X                           10600 CTT 00 00010 NUMBER OF LINE ITEMS      N0    1    6  W
+   060 O CTT102            ND  12    63     X                           10600 CTT 00 00020 HASH TOTAL                R     1   10  W
+   070 O CTT103            ND  10    75     X                           10600 CTT 00 00030 WEIGHT                    R     1   10
+   080 O CTT104            AN   2    85     X                           10600 CTT 00 00040 UNIT OR BASIS FOR ME      ID    2    2
+   090 O CTT105            ND  10    87     X                           10600 CTT 00 00050 VOLUME                    R     1    8  W
+   100 O CTT106            AN   2    97     X                           10600 CTT 00 00060 UNIT OR BASIS FOR ME      ID    2    2
+   110 O CTT107            AN  80    99     X                           10600 CTT 00 00070 DESCRIPTION               AN    1   80
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  10
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      /X   TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:33
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+
+
+                     APPLICATION PARTNER REFERENCE INFORMATION
+
+   PARTNER..................: BEG1KEY-PARTNER    QUAL.....:
+   USER.....................:                    QUAL.....:
+   INTERCHANGE VERSION......: 
+   GROUP/TRANSACTION VERSION: 
+   MULTIPLE ENVELOPE ID.....: 
+   APPLICATION KEY (1)......: 
+   APPLICATION KEY (2)......: 
+   APPLICATION KEY (3)......: 
+
+                     APPLICATION ENVELOPE DEFINITION INFORMATION
+
+   INTERCHANGE SENDER ID....:                    QUAL.....:
+   GROUP SENDER ID..........:                    QUAL.....:
+   INTERCHANGE RECEIVER ID..:                    QUAL.....:
+   GROUP RECEIVER ID........:                    QUAL.....:
+   INTERCHANGE CONTROL NUM..: 
+   GROUP CONTROL NUM........: 
+   TRANSACTION CONTROL NUM..: 
+   $$ADD BATCH ID...........: 
+   BG COMM ID...............:                    PASSWORD.:
+   ISA/UNB/STX TEST IND.....: 
+   UNB/STX/APPL REFERENCE...: 
+   UNB/STX PRIORITY CODE....: 
+   STX RECEPIENT TRANS REF..: 
+1GENTRAN MAPPING INTEGRATION  EBDI061          M A P P I N G  R E P O R T   (SUMMARY SECTION)                           PAGE   1
+
+      TRANSLATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850 PO - VERSION 3030                       DATE 05/10/2017
+    STANDARD VERSION:  003030      X    TRANSACTION SET:  850      USE CODE:  G        ENVELOPE TYPE:  X                TIME 11:55:37
+      APPLICATION ID:  850S3030X0       SEND OR RECEIVE:  S        NAME:  850SEND-003030------REVISION=0
+0
+ SEG ID VER     SEGMENT SEQ     ELEMENT SEQ     MAPPING NO                    CONDITIONAL STATEMENTS
+ ------ ---     -----------     -----------     ----------          --------------------------------------------
+
+

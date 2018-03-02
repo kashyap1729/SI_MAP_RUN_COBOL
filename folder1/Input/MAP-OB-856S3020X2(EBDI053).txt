@@ -1,0 +1,696 @@
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   1
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+ 020   M BSN1        H                1  BEGINNING SEGMENT
+   010 M BSN1KEY-ASN-NBR   AN  30     1     X
+   020 M BSN1KEY-DUN-NBR   AN  17    31     X
+   030 M BSN1RECTYPE       AN   4    48     X
+   040 M BSN1RECTYP-FILL   AN   4    52     X
+   050 O BSN101            AN   2    56     X                           00100 BSN 00 00010 TRANSACTION SET PURP      ID    2    2
+   060 O BSN102            AN  30    58     X                           00100 BSN 00 00020 SHIPMENT IDENTIFICAT      AN    2   30
+   070 O BSN103            AN   6    88     X                           00100 BSN 00 00030 DATE                      DT    6    6
+   080 O BSN104            AN   6    94     X                           00100 BSN 00 00040 TIME                      AN    4    6
+   081 O BSN104-FILLER     AN   2   100     X
+   090 O BSN105            AN   4   102     X                           00100 BSN 00 00050 HIERARCHICAL STRUCTU      ID    4    4
+
+ 030   O NTE1        H              100  NOTE/SPECIAL INSTRUCTION
+   010 M NTE1KEY-ASN-NBR   AN  30     1     X
+   020 M NTE1KEY-DUN-NBR   AN  17    31     X
+   030 M NTE1RECTYPE       AN   4    48     X
+   040 M NTE1RECTYP-FILL   AN   4    52     X
+   050 O NTE101            AN   3    56     X                           00200 NTE 00 00010 NOTE REFERENCE CODE       ID    3    3
+   060 O NTE102            AN  60    59     X                           00200 NTE 00 00020 FREE FORM MESSAGE         AN    1   60
+
+ 040   O DTM1        H               10  DATE/TIME REF
+   010 M DTM1KEY-ASN-NBR   AN  30     1     X
+   020 M DTM1KEY-DUN-NBR   AN  17    31     X
+   030 M DTM1RECTYPE       AN   4    48     X
+   040 M DTM1RECTYP-FILL   AN   4    52     X
+   050 O DTM101            AN   3    56     X                           00300 DTM 00 00010 DATE/TIME QUALIFIER       ID    3    3
+   060 O DTM102            AN   6    59     X                           00300 DTM 00 00020 DATE                      DT    6    6
+   070 O DTM103            AN   6    65     X                           00300 DTM 00 00030 TIME                      AN    4    6
+   071 O DTM103-FILLER     AN   2    71     X
+   080 O DTM104            AN   2    73     X                           00300 DTM 00 00040 TIME CODE                 ID    2    2
+   090 O DTM105            ND   2    75     X                           00300 DTM 00 00050 CENTURY                   N0    2    2
+
+ 210   M HL 1        D   0100         1  HIERARCHICAL LEVEL
+   010 M HL 1KEY-ASN-NBR   AN  30     1     X
+   020 M HL 1KEY-DUN-NBR   AN  17    31     X
+   030 M HL 1RECTYPE       AN   4    48     X
+   040 M HL 1RECTYP-FILL   AN   4    52     X
+   050 O HL 101            AN  12    56     X                           00400 HL  00 00010 HIERARCHICAL ID NUMB      AN    1   12
+   051 O HL 101-FILL1      AN  11    56     X
+   052 O HL 101-FILL2      AN  10    56     X
+   053 O HL 101-FILL3      AN   9    56     X
+   056 O HL 101-X1         AN   1    67     X
+   057 O HL 101-X2         AN   2    66     X
+   058 O HL 101-X3         AN   3    65     X
+   060 O HL 102            AN  12    68     X
+   061 O HL 102-FILL1      AN  11    68     X
+   062 O HL 102-FILL2      AN  10    68     X
+   063 O HL 102-FILL3      AN   9    68     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   2
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   066 O HL 102-X1         AN   1    79     X                           00400 HL  00 00020 HIERARCHICAL PARENT       AN    1   12
+                                                                       IF   HL 102-FILL1    EQ '           '
+                                                                      AND   HL 1RECTYPE     NE '    '
+   067 O HL 102-X2         AN   2    78     X                         1 00400 HL  00 00020 HIERARCHICAL PARENT       AN    1   12
+                                                                       IF   HL 102-FILL2    EQ '          '
+                                                                      AND   HL 1RECTYPE     NE '    '
+   068 O HL 102-X3         AN   3    77     X                         2 00400 HL  00 00020 HIERARCHICAL PARENT       AN    1   12
+                                                                       IF   HL 102-FILL3    EQ '         '
+                                                                      AND   HL 1RECTYPE     NE '    '
+   070 O HL 103            AN   2    80     X                           00400 HL  00 00030 HIERARCHICAL LEVEL C      ID    1    2
+   080 O HL 104            AN   1    82     X                           00400 HL  00 00040 HIERARCHICAL CHILD C      ID    1    1
+
+ 220   O LIN1        D   0100         1  ITEM IDENTIFICATION
+   010 M LIN1KEY-ASN-NBR   AN  30     1     X
+   020 M LIN1KEY-DUN-NBR   AN  17    31     X
+   030 M LIN1RECTYPE       AN   4    48     X
+   040 M LIN1RECTYP-FILL   AN   4    52     X
+   050 O LIN101            AN   6    56     X                           00405 LIN 00 00010 ASSIGNED IDENTIFICAT      AN    1   11
+   055 O LIN101-FILLER     AN   5    62     X
+   060 O LIN102            AN   2    67     X                           00405 LIN 00 00020 PRODUCT/SERVICE ID Q      ID    2    2
+   070 O LIN103            AN  40    69     X                           00405 LIN 00 00030 PRODUCT/SERVICE ID        AN    1   30  W
+   080 O LIN104            AN   2   109     X                           00405 LIN 00 00040 PRODUCT/SERVICE ID Q      ID    2    2
+   090 O LIN105            AN  40   111     X                           00405 LIN 00 00050 PRODUCT/SERVICE ID        AN    1   30  W
+   100 O LIN106            AN   2   151     X                           00405 LIN 00 00060 PRODUCT/SERVICE ID Q      ID    2    2
+   110 O LIN107            AN  40   153     X                           00405 LIN 00 00070 PRODUCT/SERVICE ID        AN    1   30  W
+   120 O LIN108            AN   2   193     X                           00405 LIN 00 00080 PRODUCT/SERVICE ID Q      ID    2    2
+   130 O LIN109            AN  40   195     X                           00405 LIN 00 00090 PRODUCT/SERVICE ID        AN    1   30  W
+   140 O LIN110            AN   2   235     X                           00405 LIN 00 00100 PRODUCT/SERVICE ID Q      ID    2    2
+   150 O LIN111            AN  40   237     X                           00405 LIN 00 00110 PRODUCT/SERVICE ID        AN    1   30  W
+   160 O LIN112            AN   2   277     X                           00405 LIN 00 00120 PRODUCT/SERVICE ID Q      ID    2    2
+   170 O LIN113            AN  40   279     X                           00405 LIN 00 00130 PRODUCT/SERVICE ID        AN    1   30  W
+   180 O LIN114            AN   2   319     X                           00405 LIN 00 00140 PRODUCT/SERVICE ID Q      ID    2    2
+   190 O LIN115            AN  40   321     X                           00405 LIN 00 00150 PRODUCT/SERVICE ID        AN    1   30  W
+   200 O LIN116            AN   2   361     X                           00405 LIN 00 00160 PRODUCT/SERVICE ID Q      ID    2    2
+   210 O LIN117            AN  40   363     X                           00405 LIN 00 00170 PRODUCT/SERVICE ID        AN    1   30  W
+   220 O LIN118            AN   2   403     X                           00405 LIN 00 00180 PRODUCT/SERVICE ID Q      ID    2    2
+   230 O LIN119            AN  40   405     X                           00405 LIN 00 00190 PRODUCT/SERVICE ID        AN    1   30  W
+   240 O LIN120            AN   2   445     X                           00405 LIN 00 00200 PRODUCT/SERVICE ID Q      ID    2    2
+   250 O LIN121            AN  40   447     X                           00405 LIN 00 00210 PRODUCT/SERVICE ID        AN    1   30  W
+   260 O LIN122            AN   2   487     X                           00405 LIN 00 00220 PRODUCT/SERVICE ID Q      ID    2    2
+   270 O LIN123            AN  40   489     X                           00405 LIN 00 00230 PRODUCT/SERVICE ID        AN    1   30  W
+   280 O LIN124            AN   2   529     X                           00405 LIN 00 00240 PRODUCT/SERVICE ID Q      ID    2    2
+   290 O LIN125            AN  40   531     X                           00405 LIN 00 00250 PRODUCT/SERVICE ID        AN    1   30  W
+   300 O LIN126-FILLER     AN  30   571     X
+
+ 230   O SN11        D   0100         1  ITEM DETAIL (SHIPMENT)
+   010 M SN11KEY-ASN-NBR   AN  30     1     X
+   020 M SN11KEY-DUN-NBR   AN  17    31     X
+   030 M SN11RECTYPE       AN   4    48     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   3
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   040 M SN11RECTYP-FILL   AN   4    52     X
+   050 O SN1101            AN   6    56     X                           00410 SN1 00 00010 ASSIGNED IDENTIFICAT      AN    1   11
+   055 O SN1101-FILLER     AN   5    62     X
+   060 O SN1102            ND  12    67     X                           00410 SN1 00 00020 NUMBER OF UNITS SHIP      R     1   10  W
+   070 O SN1103            AN   2    79     X                           00410 SN1 00 00030 UNIT OF MEASUREMENT       ID    2    2
+   080 O SN1104            ND  11    81     X                           00410 SN1 00 00040 QUANTITY SHIPPED TO       R     1    9  W
+   090 O SN1105            ND  11    92     X                           00410 SN1 00 00050 QUANTITY ORDERED          R     1    9  W
+   100 O SN1106            AN   2   103     X                           00410 SN1 00 00060 UNIT OF MEASUREMENT       ID    2    2
+   110 O SN1107            AN   2   105     X                           00410 SN1 00 00070 RETURNABLE CONTAINER      ID    1    2
+   120 O SN1108            AN   2   107     X                           00410 SN1 00 00080 LINE ITEM STATUS COD      ID    2    2
+
+ 240   O SLN1        D   0100       100  SUBLINE ITEM DETAIL
+   010 M SLN1KEY-ASN-NBR   AN  30     1     X
+   020 M SLN1KEY-DUN-NBR   AN  17    31     X
+   030 M SLN1RECTYPE       AN   4    48     X
+   040 M SLN1RECTYP-FILL   AN   4    52     X
+   050 O SLN101            AN   6    56     X                           00415 SLN 00 00010 ASSIGNED IDENTIFICAT      AN    1   11
+   051 O SLN101-FILLER     AN   5    62     X
+   060 O SLN102            AN   6    67     X                           00415 SLN 00 00020 ASSIGNED IDENTIFICAT      AN    1   11
+   061 O SLN102-FILLER     AN   5    73     X
+   070 O SLN103            AN   1    78     X                           00415 SLN 00 00030 CONFIGURATION CODE        ID    1    1
+   080 O SLN104            ND  17    79     X                           00415 SLN 00 00040 QUANTITY                  R     1   15  W
+   090 O SLN105            AN   2    96     X                           00415 SLN 00 00050 UNIT OF MEASUREMENT       ID    2    2
+   099 O SLN106-FILLER     AN   3    98     X
+   100 O SLN106            ND  16   101     X                           00415 SLN 00 00060 UNIT PRICE                R     1   14  W
+   110 O SLN107            AN   2   117     X                           00415 SLN 00 00070 BASIS OF UNIT PRICE       ID    2    2
+   120 O SLN108            AN   1   119     X                           00415 SLN 00 00080 SUBLINE PRICE CHANGE      ID    1    1
+   130 O SLN109            AN   2   120     X                           00415 SLN 00 00090 PRODUCT/SERVICE ID Q      ID    2    2
+   140 O SLN110            AN  40   122     X                           00415 SLN 00 00100 PRODUCT/SERVICE ID        AN    1   30  W
+   150 O SLN111            AN   2   162     X                           00415 SLN 00 00110 PRODUCT/SERVICE ID Q      ID    2    2
+   160 O SLN112            AN  40   164     X                           00415 SLN 00 00120 PRODUCT/SERVICE ID        AN    1   30  W
+   170 O SLN113            AN   2   204     X                           00415 SLN 00 00130 PRODUCT/SERVICE ID Q      ID    2    2
+   180 O SLN114            AN  40   206     X                           00415 SLN 00 00140 PRODUCT/SERVICE ID        AN    1   30  W
+   190 O SLN115            AN   2   246     X                           00415 SLN 00 00150 PRODUCT/SERVICE ID Q      ID    2    2
+   200 O SLN116            AN  40   248     X                           00415 SLN 00 00160 PRODUCT/SERVICE ID        AN    1   30  W
+   210 O SLN117            AN   2   288     X                           00415 SLN 00 00170 PRODUCT/SERVICE ID Q      ID    2    2
+   220 O SLN118            AN  40   290     X                           00415 SLN 00 00180 PRODUCT/SERVICE ID        AN    1   30  W
+   230 O SLN119            AN   2   330     X                           00415 SLN 00 00190 PRODUCT/SERVICE ID Q      ID    2    2
+   240 O SLN120            AN  40   332     X                           00415 SLN 00 00200 PRODUCT/SERVICE ID        AN    1   30  W
+   250 O SLN121            AN   2   372     X                           00415 SLN 00 00210 PRODUCT/SERVICE ID Q      ID    2    2
+   260 O SLN122            AN  40   374     X                           00415 SLN 00 00220 PRODUCT/SERVICE ID        AN    1   30  W
+   270 O SLN123            AN   2   414     X                           00415 SLN 00 00230 PRODUCT/SERVICE ID Q      ID    2    2
+   280 O SLN124            AN  40   416     X                           00415 SLN 00 00240 PRODUCT/SERVICE ID        AN    1   30  W
+   290 O SLN125            AN   2   456     X                           00415 SLN 00 00250 PRODUCT/SERVICE ID Q      ID    2    2
+   300 O SLN126            AN  40   458     X                           00415 SLN 00 00260 PRODUCT/SERVICE ID        AN    1   30  W
+   310 O SLN127            AN   2   498     X                           00415 SLN 00 00270 PRODUCT/SERVICE ID Q      ID    2    2
+   320 O SLN128            AN  40   500     X                           00415 SLN 00 00280 PRODUCT/SERVICE ID        AN    1   30  W
+
+ 250   O PRF1        D   0100         1  PURCHASE ORDER REFERENCE
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   4
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   010 M PRF1KEY-ASN-NBR   AN  30     1     X
+   020 M PRF1KEY-DUN-NBR   AN  17    31     X
+   030 M PRF1RECTYPE       AN   4    48     X
+   040 M PRF1RECTYP-FILL   AN   4    52     X
+   050 O PRF101            AN  22    56     X                           00420 PRF 00 00010 PURCHASE ORDER NUMBE      AN    1   22
+   060 O PRF102            AN  30    78     X                           00420 PRF 00 00020 RELEASE NUMBER            AN    1   30
+   070 O PRF103            AN   8   108     X                           00420 PRF 00 00030 CHANGE ORDER SEQUENC      AN    1    8
+   080 O PRF104            AN   6   116     X                           00420 PRF 00 00040 PURCHASE ORDER DATE       DT    6    6
+   090 O PRF105            AN   6   122     X                           00420 PRF 00 00050 ASSIGNED IDENTIFICAT      AN    1   11
+   091 O PRF105-FILLER     AN   5   128     X
+   100 O PRF106            AN  30   133     X                           00420 PRF 00 00060 CONTRACT NUMBER           AN    1   30
+
+ 260   O PO41        D   0100         1  ITEM PHYSICAL DETAILS
+   010 M PO41KEY-ASN-NBR   AN  30     1     X
+   020 M PO41KEY-DUN-NBR   AN  17    31     X
+   030 M PO41RECTYPE       AN   4    48     X
+   040 M PO41RECTYP-FILL   AN   4    52     X
+   050 O PO4101            ND   7    56     X                           00425 PO4 00 00010 PACK                      N0    1    6  W
+   060 O PO4102            ND  10    63     X                           00425 PO4 00 00020 SIZE                      R     1    8  W
+   070 O PO4103            AN   2    73     X                           00425 PO4 00 00030 UNIT OF MEASUREMENT       ID    2    2
+   080 O PO4104            AN  80    75     X
+   090 O PO4105            AN   5   155     X                           00425 PO4 00 00040 PACKAGING CODE            AN    5    5
+   100 O PO4106            AN   2   160     X                           00425 PO4 00 00050 WEIGHT QUALIFIER          ID    1    2
+   110 O PO4107            ND  11   162     X                           00425 PO4 00 00060 GROSS WEIGHT PER PAC      R     1    9  W
+   120 O PO4108            AN   2   173     X                           00425 PO4 00 00070 UNIT OF MEASUREMENT       ID    2    2
+   130 O PO4109            AN  80   175     X
+   140 O PO4110            ND  11   255     X                           00425 PO4 00 00080 GROSS VOLUME PER PAC      R     1    9  W
+   150 O PO4111            AN   2   266     X                           00425 PO4 00 00090 UNIT OF MEASUREMENT       ID    2    2
+   160 O PO4112            AN  80   268     X
+   170 O PO4113            ND  10   348     X                           00425 PO4 00 00100 LENGTH                    R     1    8  W
+   180 O PO4114            ND  10   358     X                           00425 PO4 00 00110 WIDTH                     R     1    8  W
+   190 O PO4115            ND  10   368     X                           00425 PO4 00 00120 HEIGHT                    R     1    8  W
+   200 O PO4116            AN   2   378     X                           00425 PO4 00 00130 UNIT OF MEASUREMENT       ID    2    2
+
+ 270   O PID1        D   0100       200  PRODUCT/ITEM DESCRIPTION
+   010 M PID1KEY-ASN-NBR   AN  30     1     X
+   020 M PID1KEY-DUN-NBR   AN  17    31     X
+   030 M PID1RECTYPE       AN   4    48     X
+   040 M PID1RECTYP-FILL   AN   4    52     X
+   050 O PID101            AN   1    56     X                           00430 PID 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+   060 O PID102            AN   3    57     X                           00430 PID 00 00020 PRODUCT/PROCESS CHAR      ID    2    3
+   070 O PID103            AN   2    60     X                           00430 PID 00 00030 AGENCY QUALIFIER COD      ID    2    2
+   080 O PID104            AN  12    62     X                           00430 PID 00 00040 PRODUCT DESCRIPTION       AN    1   12
+   090 O PID105            AN  80    74     X                           00430 PID 00 00050 DESCRIPTION               AN    1   80
+   100 O PID106            AN   2   154     X                           00430 PID 00 00060 SURFACE/LAYER/POSITI      ID    2    2
+
+ 280   O MEA1        D   0100        40  MEASUREMENTS
+   010 M MEA1KEY-ASN-NBR   AN  30     1     X
+   020 M MEA1KEY-DUN-NBR   AN  17    31     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   5
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   030 M MEA1RECTYPE       AN   4    48     X
+   040 M MEA1RECTYP-FILL   AN   4    52     X
+   050 O MEA101            AN   2    56     X                           00435 MEA 00 00010 MEASUREMENT REFERENC      ID    2    2
+   060 O MEA102            AN   3    58     X                           00435 MEA 00 00020 MEASUREMENT QUALIFIE      ID    1    3
+   069 O MEA103-FILLER-1   AN  10    61     X
+   070 O MEA103            ND  12    71     X                           00435 MEA 00 00030 MEASUREMENT VALUE         R     1   10  W
+                                                                       IF   MEA103          GT ''
+   080 O MEA104            AN   2    83     X                           00435 MEA 00 00040 UNIT OF MEASUREMENT       ID    2    2
+   089 O MEA105-FILLER-1   AN  10    85     X
+   090 O MEA105            ND  12    95     X                           00435 MEA 00 00050 RANGE MINIMUM             R     1   10  W
+   099 O MEA106-FILLER-1   AN  10   107     X
+   100 O MEA106            ND  12   117     X                           00435 MEA 00 00060 RANGE MAXIMUM             R     1   10  W
+   110 O MEA107            AN   2   129     X                           00435 MEA 00 00070 MEASUREMENT SIGNIFIC      ID    2    2
+   120 O MEA108            AN   2   131     X                           00435 MEA 00 00080 MEASUREMENT ATTRIBUT      ID    2    2
+   130 O MEA109            AN   2   133     X                           00435 MEA 00 00090 SURFACE/LAYER/POSITI      ID    2    2
+
+ 290   O PWK1        D   0100        25  PAPERWORK
+   010 M PWK1KEY-ASN-NBR   AN  30     1     X
+   020 M PWK1KEY-DUN-NBR   AN  17    31     X
+   030 M PWK1RECTYPE       AN   4    48     X
+   040 M PWK1RECTYP-FILL   AN   4    52     X
+   050 O PWK101            AN   2    56     X                           00440 PWK 00 00010 REPORT TYPE CODE          ID    2    2
+   060 O PWK102            AN   2    58     X                           00440 PWK 00 00020 REPORT TRANSMISSION       ID    2    2
+   070 O PWK103            ND   3    60     X                           00440 PWK 00 00030 REPORT COPIES NEEDED      N0    1    2  W
+   080 O PWK104            AN   2    63     X                           00440 PWK 00 00040 ENTITY IDENTIFIER CO      ID    2    2
+   090 O PWK105            AN   2    65     X                           00440 PWK 00 00050 IDENTIFICATION CODE       ID    1    2
+   100 O PWK106            AN  20    67     X                           00440 PWK 00 00060 IDENTIFICATION CODE       AN    2   17  W
+   110 O PWK107            AN  80    87     X                           00440 PWK 00 00070 DESCRIPTION               AN    1   80
+   120 O PWK108            AN   2   167     X                           00440 PWK 00 00080 PAPERWORK/REPORT ACT      ID    1    2
+
+ 300   O PKG1        D   0100        25  MARKING,PACKAGING,LOADING
+   010 M PKG1KEY-ASN-NBR   AN  30     1     X
+   020 M PKG1KEY-DUN-NBR   AN  17    31     X
+   030 M PKG1RECTYPE       AN   4    48     X
+   040 M PKG1RECTYP-FILL   AN   4    52     X
+   050 O PKG101            AN   1    56     X                           00445 PKG 00 00010 ITEM DESCRIPTION TYP      ID    1    1
+   060 O PKG102            AN   5    57     X                           00445 PKG 00 00020 PACKAGING CHARACTERI      ID    1    5
+   070 O PKG103            AN   2    62     X                           00445 PKG 00 00030 AGENCY QUALIFIER COD      ID    2    2
+   080 O PKG104            AN   7    64     X                           00445 PKG 00 00040 PACKAGING DESCRIPTIO      AN    1    7
+   090 O PKG105            AN  80    71     X                           00445 PKG 00 00050 DESCRIPTION               AN    1   80
+
+ 310   O TD11        D   0100        20  CARRIER DETAILS (QTY, WGT)
+   010 M TD11KEY-ASN-NBR   AN  30     1     X
+   020 M TD11KEY-DUN-NBR   AN  17    31     X
+   030 M TD11RECTYPE       AN   4    48     X
+   040 M TD11RECTYP-FILL   AN   4    52     X
+   050 O TD1101            AN   5    56     X                           00450 TD1 00 00010 PACKAGING CODE            AN    5    5
+   060 O TD1102            ND   8    61     X                           00450 TD1 00 00020 LADING QUANTITY           N0    1    7  W
+                                                                       IF   TD1102          GT ''
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   6
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   070 O TD1103            AN   1    69     X                           00450 TD1 00 00030 COMMODITY CODE QUALI      ID    1    1
+   080 O TD1104            AN  30    70     X                           00450 TD1 00 00040 COMMODITY CODE            AN    1   16  W
+   090 O TD1105            AN  50   100     X                           00450 TD1 00 00050 LADING DESCRIPTION        AN    1   50
+   100 O TD1106            AN   2   150     X                           00450 TD1 00 00060 WEIGHT QUALIFIER          ID    1    2
+   110 O TD1107            ND  12   152     X                           00450 TD1 00 00070 WEIGHT                    R     1    8  W
+   120 O TD1108            AN   2   164     X                           00450 TD1 00 00080 UNIT OF MEASUREMENT       ID    2    2
+
+ 320   O TD51        D   0100        12  CARRIER DTLS (RTE SEQ/TIME)
+   010 M TD51KEY-ASN-NBR   AN  30     1     X
+   020 M TD51KEY-DUN-NBR   AN  17    31     X
+   030 M TD51RECTYPE       AN   4    48     X
+   040 M TD51RECTYP-FILL   AN   4    52     X
+   050 O TD5101            AN   2    56     X                           00455 TD5 00 00010 ROUTING SEQUENCE COD      ID    1    2
+   060 O TD5102            AN   2    58     X                           00455 TD5 00 00020 IDENTIFICATION CODE       ID    1    2
+   070 O TD5103            AN  20    60     X                           00455 TD5 00 00030 IDENTIFICATION CODE       AN    2   17  W
+   080 O TD5104            AN   2    80     X                           00455 TD5 00 00040 TRANSPORTATION METHO      ID    1    2
+   090 O TD5105            AN  35    82     X                           00455 TD5 00 00050 ROUTING                   AN    1   35
+   100 O TD5106            AN   2   117     X                           00455 TD5 00 00060 SHIPMENT/ORDER STATU      ID    2    2
+   110 O TD5107            AN   2   119     X                           00455 TD5 00 00070 LOCATION QUALIFIER        ID    1    2
+   120 O TD5108            AN  30   121     X                           00455 TD5 00 00080 LOCATION IDENTIFIER       AN    1   25  W
+   130 O TD5109            AN   2   151     X                           00455 TD5 00 00090 TRANSIT DIRECTION CO      ID    2    2
+   140 O TD5110            AN   2   153     X                           00455 TD5 00 00100 TRANSIT TIME DIRECTI      ID    2    2
+   150 O TD5111            ND   4   155     X                           00455 TD5 00 00110 TRANSIT TIME              R     1    4
+   155 O TD5111-FILL       AN   2   159     X
+
+ 330   O TD31        D   0100        12  CARRIER DETAILS (EQUIPMENT)
+   010 M TD31KEY-ASN-NBR   AN  30     1     X
+   020 M TD31KEY-DUN-NBR   AN  17    31     X
+   030 M TD31RECTYPE       AN   4    48     X
+   040 M TD31RECTYP-FILL   AN   4    52     X
+   050 O TD3101            AN   2    56     X                           00460 TD3 00 00010 EQUIPMENT DESCRIPTIO      ID    2    2
+   060 O TD3102            AN   4    58     X                           00460 TD3 00 00020 EQUIPMENT INITIAL         AN    1    4
+   070 O TD3103            AN  10    62     X                           00460 TD3 00 00030 EQUIPMENT NUMBER          AN    1   10
+   080 O TD3104            AN   2    72     X                           00460 TD3 00 00040 WEIGHT QUALIFIER          ID    1    2
+   089 O TD3105-FILL       AN   2    74     X
+   090 O TD3105            ND   8    76     X                           00460 TD3 00 00050 WEIGHT                    R     1    8
+   100 O TD3106            AN   2    84     X                           00460 TD3 00 00060 UNIT OF MEASUREMENT       ID    2    2
+   110 O TD3107            AN   1    86     X                           00460 TD3 00 00070 OWNERSHIP CODE            ID    1    1
+
+ 340   O TD41        D   0100         5  CARR DTLS(SPCL HANDL/HAZARD
+   010 M TD41KEY-ASN-NBR   AN  30     1     X
+   020 M TD41KEY-DUN-NBR   AN  17    31     X
+   030 M TD41RECTYPE       AN   4    48     X
+   040 M TD41RECTYP-FILL   AN   4    52     X
+   050 O TD4101            AN   3    56     X                           00465 TD4 00 00010 SPECIAL HANDLING COD      ID    2    3
+   060 O TD4102            AN   1    59     X                           00465 TD4 00 00020 HAZARDOUS MATERIAL C      ID    1    1
+   070 O TD4103            AN   4    60     X                           00465 TD4 00 00030 HAZARDOUS MATERIAL C      AN    2    4
+   080 O TD4104            AN  80    64     X                           00465 TD4 00 00040 DESCRIPTION               AN    1   80
+
+ 350   O REF1        D   0100       200  REFERENCE NUMBERS
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   7
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   010 M REF1KEY-ASN-NBR   AN  30     1     X
+   020 M REF1KEY-DUN-NBR   AN  17    31     X
+   030 M REF1RECTYPE       AN   4    48     X
+   040 M REF1RECTYP-FILL   AN   4    52     X
+   050 O REF101            AN   2    56     X                           00470 REF 00 00010 REFERENCE NUMBER QUA      ID    2    2
+   060 O REF102            AN  30    58     X                           00470 REF 00 00020 REFERENCE NUMBER          AN    1   30
+   070 O REF103            AN  80    88     X                           00470 REF 00 00030 DESCRIPTION               AN    1   80
+
+ 360   O PER1        D   0100         1  ADMIN COMMUNICATIONS CONTCT
+   010 M PER1KEY-ASN-NBR   AN  30     1     X
+   020 M PER1KEY-DUN-NBR   AN  17    31     X
+   030 M PER1RECTYPE       AN   4    48     X
+   040 M PER1RECTYP-FILL   AN   4    52     X
+   050 O PER101            AN   2    56     X                           00475 PER 00 00010 CONTACT FUNCTION COD      ID    2    2
+   060 O PER102            AN  35    58     X                           00475 PER 00 00020 NAME                      AN    1   35
+   070 O PER103            AN   2    93     X                           00475 PER 00 00030 COMMUNICATION NUMBER      ID    2    2
+   080 O PER104            AN  80    95     X                           00475 PER 00 00040 COMMUNICATION NUMBER      AN    7   25  W
+
+ 370   O CLD1        D   0110         1  LOAD DETAIL
+   010 M CLD1KEY-ASN-NBR   AN  30     1     X
+   020 M CLD1KEY-DUN-NBR   AN  17    31     X
+   030 M CLD1RECTYPE       AN   4    48     X
+   040 M CLD1RECTYP-FILL   AN   4    52     X
+   050 O CLD101            ND   6    56     X                           02000 CLD 00 00010 NUMBER OF LOADS           N0    1    5  W
+   060 O CLD102            ND  12    62     X                           02000 CLD 00 00020 NUMBER OF UNITS SHIP      R     1   10  W
+   070 O CLD103            AN   5    74     X                           02000 CLD 00 00030 PACKAGING CODE            AN    5    5
+   080 O CLD104            ND  10    79     X                           02000 CLD 00 00040 SIZE                      R     1    8  W
+   090 O CLD105            AN   2    89     X                           02000 CLD 00 00050 UNIT OF MEASUREMENT       ID    2    2
+
+ 380   O REF2        D   0110       200  REFERENCE NUMBERS
+   010 M REF2KEY-ASN-NBR   AN  30     1     X
+   020 M REF2KEY-DUN-NBR   AN  17    31     X
+   030 M REF2RECTYPE       AN   4    48     X
+   040 M REF2RECTYP-FILL   AN   4    52     X
+   050 O REF201            AN   2    56     X                           02005 REF 00 00010 REFERENCE NUMBER QUA      ID    2    2
+   060 O REF202            AN  30    58     X                           02005 REF 00 00020 REFERENCE NUMBER          AN    1   30
+   070 O REF203            AN  80    88     X                           02005 REF 00 00030 DESCRIPTION               AN    1   80
+
+ 390   O MAN1        D   0100        10  MARKS AND NUMBERS
+   010 M MAN1KEY-ASN-NBR   AN  30     1     X
+   020 M MAN1KEY-DUN-NBR   AN  17    31     X
+   030 M MAN1RECTYPE       AN   4    48     X
+   040 M MAN1RECTYP-FILL   AN   4    52     X
+   050 O MAN101            AN   2    56     X                           02200 MAN 00 00010 MARKS AND NUMBERS QU      ID    1    2
+   060 O MAN102            AN  45    58     X                           02200 MAN 00 00020 MARKS AND NUMBERS         AN    1   45
+
+ 400   O DTM2        D   0100        10  DATE/TIME REFERENCE
+   010 M DTM2KEY-ASN-NBR   AN  30     1     X
+   020 M DTM2KEY-DUN-NBR   AN  17    31     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   8
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   030 M DTM2RECTYPE       AN   4    48     X
+   040 M DTM2RECTYP-FILL   AN   4    52     X
+   050 O DTM201            AN   3    56     X                           02205 DTM 00 00010 DATE/TIME QUALIFIER       ID    3    3
+   060 O DTM202            AN   6    59     X                           02205 DTM 00 00020 DATE                      DT    6    6
+   070 O DTM203            AN   6    65     X                           02205 DTM 00 00030 TIME                      AN    4    6
+   071 O DTM203-FILLER     AN   2    71     X
+   080 O DTM204            AN   2    73     X                           02205 DTM 00 00040 TIME CODE                 ID    2    2
+   090 O DTM205            ND   2    75     X                           02205 DTM 00 00050 CENTURY                   N0    2    2
+
+ 410   O FOB1        D   0100         1  FOB INSTRUCTIONS
+   010 M FOB1KEY-ASN-NBR   AN  30     1     X
+   020 M FOB1KEY-DUN-NBR   AN  17    31     X
+   030 M FOB1RECTYPE       AN   4    48     X
+   040 M FOB1RECTYP-FILL   AN   4    52     X
+   050 O FOB101            AN   2    56     X                           02210 FOB 00 00010 SHIPMENT METHOD OF P      ID    2    2
+   060 O FOB102            AN   2    58     X                           02210 FOB 00 00020 LOCATION QUALIFIER        ID    1    2
+   070 O FOB103            AN  80    60     X                           02210 FOB 00 00030 DESCRIPTION               AN    1   80
+   080 O FOB104            AN   2   140     X                           02210 FOB 00 00040 TRANSPORTATION TERMS      ID    2    2
+   090 O FOB105            AN   6   142     X                           02210 FOB 00 00050 TRANSPORTATION TERMS      ID    3    3  W
+   100 O FOB106            AN   2   148     X                           02210 FOB 00 00060 LOCATION QUALIFIER        ID    1    2
+   110 O FOB107            AN  80   150     X                           02210 FOB 00 00070 DESCRIPTION               AN    1   80
+   120 O FOB108            AN   2   230     X                           02210 FOB 00 00080 RISK OF LOSS QUALIFI      ID    2    2
+   130 O FOB109            AN  80   232     X                           02210 FOB 00 00090 DESCRIPTION               AN    1   80
+
+ 420   O N1 1        D   0120         1  NAME
+   010 M N1 1KEY-ASN-NBR   AN  30     1     X
+   020 M N1 1KEY-DUN-NBR   AN  17    31     X
+   030 M N1 1RECTYPE       AN   4    48     X
+   040 M N1 1RECTYP-FILL   AN   4    52     X
+   050 O N1 101            AN   2    56     X                           02500 N1  00 00010 ENTITY IDENTIFIER CO      ID    2    2
+   060 O N1 102            AN  35    58     X                           02500 N1  00 00020 NAME                      AN    1   35
+   070 O N1 103            AN   2    93     X                           02500 N1  00 00030 IDENTIFICATION CODE       ID    1    2
+   080 O N1 104            AN  20    95     X                           02500 N1  00 00040 IDENTIFICATION CODE       AN    2   17  W
+
+ 430   O N2 1        D   0120         2  ADDL NAME INFO
+   010 M N2 1KEY-ASN-NBR   AN  30     1     X
+   020 M N2 1KEY-DUN-NBR   AN  17    31     X
+   030 M N2 1RECTYPE       AN   4    48     X
+   040 M N2 1RECTYP-FILL   AN   4    52     X
+   050 O N2 101            AN  35    56     X                           02505 N2  00 00010 NAME                      AN    1   35
+   060 O N2 102            AN  35    91     X                           02505 N2  00 00020 NAME                      AN    1   35
+
+ 440   O N3 1        D   0120         2  ADDRESS INFO
+   010 M N3 1KEY-ASN-NBR   AN  30     1     X
+   020 M N3 1KEY-DUN-NBR   AN  17    31     X
+   030 M N3 1RECTYPE       AN   4    48     X
+   040 M N3 1RECTYP-FILL   AN   4    52     X
+   050 M N3 101            AN  35    56     X                           02510 N3  00 00010 ADDRESS INFORMATION       AN    1   35
+   060 M N3 102            AN  35    91     X                           02510 N3  00 00020 ADDRESS INFORMATION       AN    1   35
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE   9
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+
+ 450   O N4 1        D   0120         1  GEOGRAPHIC LOCATION
+   010 M N4 1KEY-ASN-NBR   AN  30     1     X
+   020 M N4 1KEY-DUN-NBR   AN  17    31     X
+   030 M N4 1RECTYPE       AN   4    48     X
+   040 M N4 1RECTYP-FILL   AN   4    52     X
+   050 O N4 101            AN  30    56     X                           02515 N4  00 00010 CITY NAME                 AN    2   19  W
+   060 O N4 102            AN   2    86     X                           02515 N4  00 00020 STATE OR PROVINCE CO      ID    2    2
+   070 O N4 103            AN  11    88     X                           02515 N4  00 00030 POSTAL CODE               ID    4    9  W
+   080 O N4 104            AN   3    99     X                           02515 N4  00 00040 COUNTRY CODE              ID    2    2  W
+   090 O N4 105            AN   2   102     X                           02515 N4  00 00050 LOCATION QUALIFIER        ID    1    2
+   100 O N4 106            AN  30   104     X                           02515 N4  00 00060 LOCATION IDENTIFIER       AN    1   25  W
+
+ 460   O REF3        D   0120        12  REFERENCE NUMBERS
+   010 M REF3KEY-ASN-NBR   AN  30     1     X
+   020 M REF3KEY-DUN-NBR   AN  17    31     X
+   030 M REF3RECTYPE       AN   4    48     X
+   040 M REF3RECTYP-FILL   AN   4    52     X
+   050 O REF301            AN   2    56     X                           02520 REF 00 00010 REFERENCE NUMBER QUA      ID    2    2
+   060 O REF302            AN  30    58     X                           02520 REF 00 00020 REFERENCE NUMBER          AN    1   30
+   070 O REF303            AN  80    88     X                           02520 REF 00 00030 DESCRIPTION               AN    1   80
+
+ 470   O PER2        D   0120         3  ADMIN COMMUN CONTACT
+   010 M PER2KEY-ASN-NBR   AN  30     1     X
+   020 M PER2KEY-DUN-NBR   AN  17    31     X
+   030 M PER2RECTYPE       AN   4    48     X
+   040 M PER2RECTYP-FILL   AN   4    52     X
+   050 O PER201            AN   2    56     X                           02525 PER 00 00010 CONTACT FUNCTION COD      ID    2    2
+   060 O PER202            AN  35    58     X                           02525 PER 00 00020 NAME                      AN    1   35
+   070 O PER203            AN   2    93     X                           02525 PER 00 00030 COMMUNICATION NUMBER      ID    2    2
+   080 O PER204            AN  80    95     X                           02525 PER 00 00040 COMMUNICATION NUMBER      AN    7   25  W
+
+ 480   O FOB2        D   0120         1  FOB RELATED INSTRUCTIONS
+   010 M FOB2KEY-ASN-NBR   AN  30     1     X
+   020 M FOB2KEY-DUN-NBR   AN  17    31     X
+   030 M FOB2RECTYPE       AN   4    48     X
+   040 M FOB2RECTYP-FILL   AN   4    52     X
+   050 O FOB201            AN   2    56     X                           02530 FOB 00 00010 SHIPMENT METHOD OF P      ID    2    2
+   060 O FOB202            AN   2    58     X                           02530 FOB 00 00020 LOCATION QUALIFIER        ID    1    2
+   070 O FOB203            AN  80    60     X                           02530 FOB 00 00030 DESCRIPTION               AN    1   80
+   080 O FOB204            AN   2   140     X                           02530 FOB 00 00040 TRANSPORTATION TERMS      ID    2    2
+   090 O FOB205            AN   6   142     X                           02530 FOB 00 00050 TRANSPORTATION TERMS      ID    3    3  W
+   100 O FOB206            AN   2   148     X                           02530 FOB 00 00060 LOCATION QUALIFIER        ID    1    2
+   110 O FOB207            AN  80   150     X                           02530 FOB 00 00070 DESCRIPTION               AN    1   80
+   120 O FOB208            AN   2   230     X                           02530 FOB 00 00080 RISK OF LOSS QUALIFI      ID    2    2
+   130 O FOB209            AN  80   232     X                           02530 FOB 00 00090 DESCRIPTION               AN    1   80
+
+ 490   O SDQ1        D   0100        50  DESTINATION QUANTITY
+   010 M SDQ1KEY-ASN-NBR   AN  30     1     X
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  10
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   020 M SDQ1KEY-DUN-NBR   AN  17    31     X
+   030 M SDQ1RECTYPE       AN   4    48     X
+   040 M SDQ1RECTYP-FILL   AN   4    52     X
+   050 O SDQ101            AN   2    56     X                           03200 SDQ 00 00010 UNIT OF MEASUREMENT       ID    2    2
+   060 O SDQ102            AN   2    58     X                           03200 SDQ 00 00020 IDENTIFICATION CODE       ID    1    2
+   070 O SDQ103            AN  25    60     X                           03200 SDQ 00 00030 IDENTIFICATION CODE       AN    2   17  W
+   080 O SDQ104            ND  17    85     X                           03200 SDQ 00 00040 QUANTITY                  R     1   15  W
+   090 O SDQ105            AN  25   102     X                           03200 SDQ 00 00050 IDENTIFICATION CODE       AN    2   17  W
+   100 O SDQ106            ND  17   127     X                           03200 SDQ 00 00060 QUANTITY                  R     1   15  W
+   110 O SDQ107            AN  25   144     X                           03200 SDQ 00 00070 IDENTIFICATION CODE       AN    2   17  W
+   120 O SDQ108            ND  17   169     X                           03200 SDQ 00 00080 QUANTITY                  R     1   15  W
+   130 O SDQ109            AN  25   186     X                           03200 SDQ 00 00090 IDENTIFICATION CODE       AN    2   17  W
+   140 O SDQ110            ND  17   211     X                           03200 SDQ 00 00100 QUANTITY                  R     1   15  W
+   150 O SDQ111            AN  25   228     X                           03200 SDQ 00 00110 IDENTIFICATION CODE       AN    2   17  W
+   160 O SDQ112            ND  17   253     X                           03200 SDQ 00 00120 QUANTITY                  R     1   15  W
+   170 O SDQ113            AN  25   270     X                           03200 SDQ 00 00130 IDENTIFICATION CODE       AN    2   17  W
+   180 O SDQ114            ND  17   295     X                           03200 SDQ 00 00140 QUANTITY                  R     1   15  W
+   190 O SDQ115            AN  25   312     X                           03200 SDQ 00 00150 IDENTIFICATION CODE       AN    2   17  W
+   200 O SDQ116            ND  17   337     X                           03200 SDQ 00 00160 QUANTITY                  R     1   15  W
+   210 O SDQ117            AN  25   354     X                           03200 SDQ 00 00170 IDENTIFICATION CODE       AN    2   17  W
+   220 O SDQ118            ND  17   379     X                           03200 SDQ 00 00180 QUANTITY                  R     1   15  W
+   230 O SDQ119            AN  25   396     X                           03200 SDQ 00 00190 IDENTIFICATION CODE       AN    2   17  W
+   240 O SDQ120            ND  17   421     X                           03200 SDQ 00 00200 QUANTITY                  R     1   15  W
+   250 O SDQ121            AN  25   438     X                           03200 SDQ 00 00210 IDENTIFICATION CODE       AN    2   17  W
+   260 O SDQ122            ND  17   463     X                           03200 SDQ 00 00220 QUANTITY                  R     1   15  W
+
+ 500   O ETD1        D   0100         1  EXCESS TRANSPORTAION DETAIL
+   010 M ETD1KEY-ASN-NBR   AN  30     1     X
+   020 M ETD1KEY-DUN-NBR   AN  17    31     X
+   030 M ETD1RECTYPE       AN   4    48     X
+   040 M ETD1RECTYP-FILL   AN   4    52     X
+   050 O ETD101            AN   2    56     X                           03205 ETD 00 00010 EXCESS TRANSPORTATIO      ID    1    2
+   060 O ETD102            AN   1    58     X                           03205 ETD 00 00020 EXCESS TRANSPORTATIO      ID    1    1
+   070 O ETD103            AN   2    59     X                           03205 ETD 00 00030 REFERENCE NUMBER QUA      ID    2    2
+   080 O ETD104            AN  30    61     X                           03205 ETD 00 00040 REFERENCE NUMBER          AN    1   30
+   090 O ETD105            AN   2    91     X                           03205 ETD 00 00050 RETURNABLE CONTAINER      ID    1    2
+
+ 510   O CUR1        D   0100         1  CURRENCY
+   010 M CUR1KEY-ASN-NBR   AN  30     1     X
+   020 M CUR1KEY-DUN-NBR   AN  17    31     X
+   030 M CUR1RECTYPE       AN   4    48     X
+   040 M CUR1RECTYP-FILL   AN   4    52     X
+   050 O CUR101            AN   2    56     X                           03210 CUR 00 00010 ENTITY IDENTIFIER CO      ID    2    2
+   060 O CUR102            AN   3    58     X                           03210 CUR 00 00020 CURRENCY CODE             ID    3    3
+   070 O CUR103            ND   8    61     X                           03210 CUR 00 00030 EXCHANGE RATE             R     4    6  W
+   080 O CUR104            AN   2    69     X                           03210 CUR 00 00040 ENTITY IDENTIFIER CO      ID    2    2
+   090 O CUR105            AN   3    71     X                           03210 CUR 00 00050 CURRENCY CODE             ID    3    3
+   100 O CUR106            AN   3    74     X                           03210 CUR 00 00060 CURRENCY MARKET/EXCH      ID    3    3
+   110 O CUR107            AN   3    77     X                           03210 CUR 00 00070 DATE/TIME QUALIFIER       ID    3    3
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  11
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   120 O CUR108            AN   6    80     X                           03210 CUR 00 00080 DATE                      DT    6    6
+   130 O CUR109            AN   4    86     X                           03210 CUR 00 00090 TIME                      AN    4    6
+   135 O CUR109-FILLER     AN   4    90     X
+   140 O CUR110            AN   3    94     X                           03210 CUR 00 00100 DATE/TIME QUALIFIER       ID    3    3
+   150 O CUR111            AN   6    97     X                           03210 CUR 00 00110 DATE                      DT    6    6
+   160 O CUR112            AN   4   103     X                           03210 CUR 00 00120 TIME                      AN    4    6
+   165 O CUR112-FILLER     AN   4   107     X
+   170 O CUR113            AN   3   111     X                           03210 CUR 00 00130 DATE/TIME QUALIFIER       ID    3    3
+   180 O CUR114            AN   6   114     X                           03210 CUR 00 00140 DATE                      DT    6    6
+   190 O CUR115            AN   4   120     X                           03210 CUR 00 00150 TIME                      AN    4    6
+   195 O CUR115-FILLER     AN   4   124     X
+   200 O CUR116            AN   3   128     X                           03210 CUR 00 00160 DATE/TIME QUALIFIER       ID    3    3
+   210 O CUR117            AN   6   131     X                           03210 CUR 00 00170 DATE                      DT    6    6
+   220 O CUR118            AN   4   137     X                           03210 CUR 00 00180 TIME                      AN    4    6
+   225 O CUR118-FILLER     AN   4   141     X
+   230 O CUR119            AN   3   145     X                           03210 CUR 00 00190 DATE/TIME QUALIFIER       ID    3    3
+   240 O CUR120            AN   6   148     X                           03210 CUR 00 00200 DATE                      DT    6    6
+   250 O CUR121            AN   4   154     X                           03210 CUR 00 00210 TIME                      AN    4    6
+   255 O CUR121-FILLER     AN   4   158     X
+
+ 520   O ITA1        D   0100        10  ALLOWANCE/CHARGE/SERVICE
+   010 M ITA1KEY-ASN-NBR   AN  30     1     X
+   020 M ITA1KEY-DUN-NBR   AN  17    31     X
+   030 M ITA1RECTYPE       AN   4    48     X
+   040 M ITA1RECTYP-FILL   AN   4    52     X
+   050 O ITA101            AN   1    56     X                           03215 ITA 00 00010 ALLOWANCE OR CHARGE       ID    1    1
+   060 O ITA102            AN   2    57     X                           03215 ITA 00 00020 AGENCY QUALIFIER COD      ID    2    2
+   070 O ITA103            AN  10    59     X                           03215 ITA 00 00030 SPECIAL SERVICES COD      AN    2   10
+   080 O ITA104            AN   2    69     X                           03215 ITA 00 00040 ALLOWANCE OR CHARGE       ID    2    2
+   090 O ITA105            AN  16    71     X                           03215 ITA 00 00050 ALLOWANCE OR CHARGE       AN    1   16
+   100 O ITA106            ND  11    87     X                           03215 ITA 00 00060 ALLOWANCE OR CHARGE       R     1    9  W
+   110 O ITA107            ND  10    98     X                           03215 ITA 00 00070 ALLOWANCE OR CHARGE       N2    1    9  W
+   120 O ITA108            AN   1   108     X                           03215 ITA 00 00080 ALLOWANCE/ CHARGE PE      ID    1    1
+   130 O ITA109            ND   8   109     X                           03215 ITA 00 00090 ALLOWANCE OR CHARGE       R     1    6  W
+   138 O ITA110-V3050      ND  17   117     X
+   139 O ITA110-V3050-FL   AN   5   117     X
+   140 O ITA110            ND  12   122     X                           03215 ITA 00 00100 ALLOWANCE OR CHARGE       R     1   10  W
+   150 O ITA111            AN   2   134     X                           03215 ITA 00 00110 UNIT OF MEASUREMENT       ID    2    2
+   160 O ITA112            ND  17   136     X                           03215 ITA 00 00120 QUANTITY                  R     1   15  W
+   170 O ITA113            AN  80   153     X                           03215 ITA 00 00130 DESCRIPTION               AN    1   80
+   180 O ITA114            AN   3   233     X                           03215 ITA 00 00140 SPECIAL CHARGE OR AL      ID    3    3
+
+ 710   M CTT1        S                1  TRANSACTION TOTALS
+   010 M CTT1KEY-ASN-NBR   AN  30     1     X
+   020 M CTT1KEY-NUM-NBR   AN  17    31     X
+   030 M CTT1RECTYPE       AN   4    48     X
+   040 M CTT1RECTYP-FILL   AN   4    52     X
+   050 O CTT101            ND   7    56     X                           03600 CTT 00 00010 NUMBER OF LINE ITEMS      N0    1    6  W
+   060 O CTT102            ND  12    63     X                           03600 CTT 00 00020 HASH TOTAL                R     1   10  W
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  12
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+ SEQ   M TYPE       H/D  LOOP     MAX U     DESCRIPTION             ALT  SEG     WRITE FLAG
+   SEQ C      ELEMENT     TYP LEN START                             MAP  SEQ  SEG SV  ELE  DESCRIPTION              TYPE MIN  MAX MSG
+
+   069 O CTT103-FILLER     AN   2    75     X
+   070 O CTT103            ND  10    77     X                           03600 CTT 00 00030 WEIGHT                    R     1    8  W
+   080 O CTT104            AN   2    87     X                           03600 CTT 00 00040 UNIT OF MEASUREMENT       ID    2    2
+   090 O CTT105            ND  10    89     X                           03600 CTT 00 00050 VOLUME                    R     1    8  W
+   100 O CTT106            AN   2    99     X                           03600 CTT 00 00060 UNIT OF MEASUREMENT       ID    2    2
+   110 O CTT107            AN  80   101     X                           03600 CTT 00 00070 DESCRIPTION               AN    1   80
+1GENTRAN MAPPING INTEGRATION  EBDI053          M A P P I N G  R E P O R T   (APPLICATION SEQUENCE)                      PAGE  13
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      /X   TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:03
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+
+
+                     APPLICATION PARTNER REFERENCE INFORMATION
+
+   PARTNER..................: BSN1KEY-DUN-NBR    QUAL.....:
+   USER.....................:                    QUAL.....:
+   INTERCHANGE VERSION......: 
+   GROUP/TRANSACTION VERSION: 
+   MULTIPLE ENVELOPE ID.....: 
+   APPLICATION KEY (1)......: 
+   APPLICATION KEY (2)......: 
+   APPLICATION KEY (3)......: 
+
+                     APPLICATION ENVELOPE DEFINITION INFORMATION
+
+   INTERCHANGE SENDER ID....:                    QUAL.....:
+   GROUP SENDER ID..........:                    QUAL.....:
+   INTERCHANGE RECEIVER ID..:                    QUAL.....:
+   GROUP RECEIVER ID........:                    QUAL.....:
+   INTERCHANGE CONTROL NUM..: 
+   GROUP CONTROL NUM........: 
+   TRANSACTION CONTROL NUM..: 
+   $$ADD BATCH ID...........: 
+   BG COMM ID...............:                    PASSWORD.:
+   ISA/UNB/STX TEST IND.....: 
+   UNB/STX/APPL REFERENCE...: 
+   UNB/STX PRIORITY CODE....: 
+   STX RECEPIENT TRANS REF..: 
+1GENTRAN MAPPING INTEGRATION  EBDI061          M A P P I N G  R E P O R T   (SUMMARY SECTION)                           PAGE   1
+
+      TRANSLATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856 ASN'S VERSION 3020 REV 2                DATE 05/11/2017
+    STANDARD VERSION:  003020      X    TRANSACTION SET:  856      USE CODE:  G        ENVELOPE TYPE:  X                TIME 09:02:05
+      APPLICATION ID:  856S3020X2       SEND OR RECEIVE:  S        NAME:  856SEND-003020--ASN-REV 2
+0
+ SEG ID VER     SEGMENT SEQ     ELEMENT SEQ     MAPPING NO                    CONDITIONAL STATEMENTS
+ ------ ---     -----------     -----------     ----------          --------------------------------------------
+
+
